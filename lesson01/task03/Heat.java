@@ -11,6 +11,11 @@ class Heat {
         Scanner scn = new Scanner(System.in);
         int value = scn.nextInt(); scn.nextLine();
         String type = scn.nextLine();
-        System.out.println(new HeatConverter(value).setHeatType(type).getAsOther());
+        try {
+            System.out.println(new HeatConverter(value).setHeatType(type).getAsOther());
+        } catch (NullPointerException e) {
+            System.out.println("Bad heat type");
+            e.printStackTrace();
+        }
     }
 }
