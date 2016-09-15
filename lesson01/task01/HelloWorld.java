@@ -1,6 +1,6 @@
-class helloworld {
+class HelloWorld {
 
-    private helloworld() {
+    private HelloWorld() {
 
     }
 
