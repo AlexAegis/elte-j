@@ -13,7 +13,7 @@ class Heat {
         String type = scn.nextLine();
         try {
             System.out.println(new HeatConverter(value).setHeatType(type).getAsOther());
-        } catch (NullPointerException e) {
+        } catch (WrongHeatTypeException e) {
             System.out.println("Bad heat type");
             e.printStackTrace();
         }

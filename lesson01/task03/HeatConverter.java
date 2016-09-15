@@ -16,33 +16,30 @@ class HeatConverter {
         return this;
     }
 
-    public int getAsCelsius() {
+    public int getAsCelsius() throws WrongHeatTypeException {
         if (this.type.equals("C")) {
             return this.value;
         } else if (this.type.equals("F")) {
             return ((this.value - 32) * 5) / 9;
         }
-        throw new NullPointerException();
+        throw new WrongHeatTypeException();
     }
 
-    public int getAsFahrenheit() {
+    public int getAsFahrenheit() throws WrongHeatTypeException {
         if (this.type.equals("F")) {
             return this.value;
         } else if (this.type.equals("C")) {
             return ((this.value * 9) / 5) + 32;
         }
-        throw new NullPointerException();
+        throw new WrongHeatTypeException();
     }
 
-    public int getAsOther() {
+    public int getAsOther() throws WrongHeatTypeException {
         if (this.type.equals("F")) {
             return getAsCelsius();
         } else if (this.type.equals("C")) {
             return getAsFahrenheit();
         }
-        throw new NullPointerException();
+        throw new WrongHeatTypeException();
     }
-
-
-
 }
