@@ -8,7 +8,6 @@ class Heat {
     }
 
     public static void main(String[] args) {
-
         Scanner scn = new Scanner(System.in);
         int value = scn.nextInt(); scn.nextLine();
         String type = scn.nextLine();
