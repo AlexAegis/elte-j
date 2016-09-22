@@ -2,8 +2,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import Exceptions.EmptyNameException;
-import Exceptions.IllegalBirthYearException;
+import Exceptions.*;
 
 public class Name {
 
