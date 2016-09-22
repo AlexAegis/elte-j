@@ -1,16 +1,16 @@
 import java.util.*;
-import java.io.*;
-import java.util.Scanner;
 
-public class Calc {
+class Calc {
 
     private String operator;
     private List<Integer> operands;
     private Integer result;
 
+
     public Calc() {
         this.operands = new ArrayList<Integer>();
     }
+
 
     public Calc setOperator(String operator) {
         this.operator = operator;
