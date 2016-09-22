@@ -18,7 +18,10 @@ public class Name {
         return preFix;
     }
 
-    void setPreFix(String preFix) {
+    void setPreFix(String preFix) throws EmptyNameException {
+        if(preFix.isEmpty()) {
+            throw new EmptyNameException();
+        }
         this.preFix = preFix;
     }
 
