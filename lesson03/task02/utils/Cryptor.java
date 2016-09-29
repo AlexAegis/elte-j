@@ -2,18 +2,20 @@ package utils;
 
 public class Cryptor {
 	
-	public static String encode(String s, char encryption) {
-		String result = "";
-		for(char ch : s.toCharArray()) {
-			result += ch^encryption;
+
+	public static String encode(String s, String secret) {
+		char[] buffer = s.toCharArray();
+		int j = 0;
+		for (int i = 0; i < buffer.length; i++) {
+			buffer[i] ^= secret.charAt(j);
+			j = (j + 1) % secret.toCharArray().length;
 		}
-		return result;
+		return new String(buffer);
 	}
 
 
-	public static String decode(String s, char encryption) {
-
-		return encode(encode(s, encryption));
+	public static String decode(String s, String secret) {
+		return encode(s, secret);
 	}
 
 }
