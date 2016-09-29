@@ -15,10 +15,11 @@ public class NumericArrays {
 		return sum(a) / a.length;
 	}
 
-	public static double[] normalize(double[] a) {
-		double[] normalized = new double[a.length];
-		//FIXME
-		return normalized;
+	public static void normalize(double[] a) {
+		double s = sum(a);
+		for(int i = 0; i < a.length; i++) {
+			a[i] /= s;
+		}
 	}
 
 }

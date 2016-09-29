@@ -11,10 +11,23 @@ public class Main {
 		for(double d : a) {
 			System.out.println(d);
 		}
+		
+		// Sum
 		System.out.println();
 
 		System.out.println(NumericArrays.sum(a));
+
+		// Average
+		System.out.println();
+
 		System.out.println(NumericArrays.average(a));
-		System.out.println(NumericArrays.normalize(a));
+
+		// Normalize
+		System.out.println();
+
+		NumericArrays.normalize(a);
+		for(double d : a) {
+			System.out.println(d);
+		}
 	}
 }

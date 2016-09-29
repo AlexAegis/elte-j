@@ -1,16 +1,19 @@
 package utils;
 
 public class Cryptor {
-
-	private String encryption = "^";
 	
-	public String encode(String s) {
-
+	public static String encode(String s, char encryption) {
+		String result = "";
+		for(char ch : s.toCharArray()) {
+			result += ch^encryption;
+		}
+		return result;
 	}
 
 
-	public String decode(String s) {
+	public static String decode(String s, char encryption) {
 
+		return encode(encode(s, encryption));
 	}
 
 }
