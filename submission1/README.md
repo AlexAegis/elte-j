@@ -2,6 +2,8 @@
 
 #####ELTE Programozási Nyelvek 2. JAVA - 2016/2017-1
 
+##Első beadandó
+
 ## A feladat összefoglaló leírása
 
 Ebben a feladatban egy irodalomjegyzéket feldolgozó programot és annak részeit fogjuk elkészíteni. A feldolgozás során a szabványos bemenetről olvasunk be CSV formátumban bejegyzéseket, majd ezeket a parancssorban megadott kapcsolók szerint formázni és szűrni tudjuk, és az eredményt a szabványos kimenetre írjuk ki.
