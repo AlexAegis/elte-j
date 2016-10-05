@@ -1,9 +1,8 @@
-| **Course, group:** | Programozási nyelvek II. JAVA (BSc) |
-| **Teacher:** | Páli Gábor, Kozsik Tamás |
-| **Assignment:** | Első beadandó |
-| **Deadline:** | 2016-10-16, 23:59:00 |
+# elte-proglang-java
 
-# A feladat összefoglaló leírása
+#####ELTE Programozási Nyelvek 2. JAVA - 2016/2017-1
+
+## A feladat összefoglaló leírása
 
 Ebben a feladatban egy irodalomjegyzéket feldolgozó programot és annak részeit fogjuk elkészíteni. A feldolgozás során a szabványos bemenetről olvasunk be CSV formátumban bejegyzéseket, majd ezeket a parancssorban megadott kapcsolók szerint formázni és szűrni tudjuk, és az eredményt a szabványos kimenetre írjuk ki.
 
