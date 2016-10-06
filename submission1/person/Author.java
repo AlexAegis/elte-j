@@ -22,6 +22,10 @@ public class Author {
         }
     }
 
+    public static Author copy(Author author) {
+        return Author.make(author.getFirstName() + " " +  author.getLastName());
+    }
+
     public String getLastName() {
         return this.name.getLastName();
     }
