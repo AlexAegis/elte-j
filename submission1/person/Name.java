@@ -1,6 +1,7 @@
 package person;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -14,6 +15,10 @@ public class Name {
         names = new ArrayList<>();
     }
 
+    Name(String name) {
+        this.names = Arrays.asList(name.split(" "));
+    }
+
     String getPreFix() {
         return preFix;
     }
@@ -24,6 +29,14 @@ public class Name {
 
     List<String> getNames() {
         return names;
+    }
+
+    String getFirstName() {
+        return names.get(0);
+    }
+
+    String getLastName() {
+        return names.get(names.size());
     }
 
     void setNames(List<String> names) {

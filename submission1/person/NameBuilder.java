@@ -8,6 +8,10 @@ public class NameBuilder {
         this.name = new Name();
     }
 
+    public NameBuilder (String names) {
+        this.name = new Name(names);
+    }
+
     public NameBuilder addPrefix(String prefix) {
         this.name.setPreFix(prefix);
         return this;
@@ -17,6 +21,7 @@ public class NameBuilder {
         this.name.addName(name);
         return this;
     }
+
 
     public NameBuilder addPostFix(String postfix) {
         this.name.setPostFix(postfix);
