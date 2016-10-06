@@ -1,4 +1,4 @@
-package tests;
+/*package tests;
 
 import person.Author;
 import biblio.Entry;
@@ -63,3 +63,4 @@ public class EntryTest extends Testable {
         Test.main(new EntryTest());
     }
 }
+*/

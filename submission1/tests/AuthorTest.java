@@ -1,4 +1,4 @@
-package tests;
+/*package tests;
 
 import person.Author;
 import utest.*;
@@ -41,3 +41,4 @@ public class AuthorTest extends Testable {
         Test.main(new AuthorTest());
     }
 }
+*/

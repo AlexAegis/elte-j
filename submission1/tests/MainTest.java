@@ -1,4 +1,4 @@
-package tests;
+/*package tests;
 
 import main.Main;
 import utest.*;
@@ -146,3 +146,4 @@ public class MainTest extends Testable {
         Test.main(new MainTest());
     }
 }
+*/

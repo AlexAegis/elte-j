@@ -1,4 +1,4 @@
-package tests;
+/*package tests;
 
 import person.Author;
 import biblio.Entry;
@@ -38,3 +38,4 @@ public class QueryTest extends Testable {
         Test.main(new QueryTest());
     }
 }
+*/

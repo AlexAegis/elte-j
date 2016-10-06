@@ -36,7 +36,7 @@ public class Name {
     }
 
     String getLastName() {
-        return names.get(names.size());
+        return names.get(names.size() - 1);
     }
 
     void setNames(List<String> names) {

@@ -1,4 +1,4 @@
-package tests;
+/*package tests;
 
 import csv.CSV;
 import biblio.Bibliography;
@@ -51,3 +51,4 @@ public class BibliographyTest extends Testable {
         Test.main(new BibliographyTest());
     }
 }
+*/
