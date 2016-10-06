@@ -10,9 +10,7 @@ public class Main {
         List<String> l = new ArrayList<>();
         for(;true; l.add(scn.nextLine())) {
             Collections.reverse(l);
-            for (String s : l) {
-                System.out.println("-" + s);
-            }
+            l.stream().forEach(s -> System.out.println("-" + s));
             Collections.reverse(l);
         }
     }
