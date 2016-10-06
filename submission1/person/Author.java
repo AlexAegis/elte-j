@@ -2,8 +2,6 @@ package person;
 
 import exceptions.IllegalNameException;
 
-import java.util.Objects;
-
 public class Author {
 
     private Name name;
@@ -16,7 +14,6 @@ public class Author {
         try {
             this.name = new NameBuilder().addName(author.getFirstName()).addName(author.getLastName()).getName();
         } catch (IllegalNameException e) {
-            e.printStackTrace();
         }
     }
 
