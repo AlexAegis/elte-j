@@ -8,8 +8,8 @@ public class Author {
         this.name = name;
     }
 
-    private Author(String firstName, String lastName) {
-        this(new NameBuilder().addName(firstName).addName(lastName).getName());
+    public Author(Author author) {
+        new Author(new NameBuilder(author.getFirstName() + author.getLastName()).getName());
     }
 
     public static Author make(String name) {
@@ -24,4 +24,23 @@ public class Author {
         return this.name.getFirstName();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Author author = (Author) o;
+
+        return name != null ? name.equals(author.name) : author.name == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return name != null ? name.hashCode() : 0;
+    }
 }

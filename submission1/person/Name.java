@@ -15,10 +15,6 @@ public class Name {
         names = new ArrayList<>();
     }
 
-    Name(String name) {
-        this.names = Arrays.asList(name.split(" "));
-    }
-
     String getPreFix() {
         return preFix;
     }
@@ -53,6 +49,36 @@ public class Name {
 
     void setPostFix(String postFix) {
         this.postFix = postFix;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Name name = (Name) o;
+
+        if (preFix != null ? !preFix.equals(name.preFix) : name.preFix != null) {
+            return false;
+        }
+        if (names != null ? !names.equals(name.names) : name.names != null) {
+            return false;
+        }
+        return postFix != null ? postFix.equals(name.postFix) : name.postFix == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = preFix != null ? preFix.hashCode() : 0;
+        result = 31 * result + (names != null ? names.hashCode() : 0);
+        result = 31 * result + (postFix != null ? postFix.hashCode() : 0);
+        return result;
     }
 
     @Override
