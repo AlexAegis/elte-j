@@ -12,8 +12,12 @@ public class NameBuilder {
         this.name = new Name();
     }
 
+
     public NameBuilder(String names) throws IllegalNameException {
         this();
+        if(names.isEmpty()) {
+            throw new IllegalNameException();
+        }
         Arrays.asList(names.split(" ")).forEach(s -> {
             try {
                 this.addName(s);
@@ -21,6 +25,9 @@ public class NameBuilder {
                 e.printStackTrace();
             }
         });
+        if (this.name.getNames().size() < 2) {
+            throw new IllegalNameException();
+        }
     }
 
     public NameBuilder addPrefix(String prefix) throws IllegalNameException {

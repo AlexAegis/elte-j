@@ -10,7 +10,7 @@ public class Main {
         Author a = Author.make("John Maker");
         System.out.println(a.show());
 
-
+        System.out.println(a.getLastName().equals("Maker"));
         Entry entry1 = Entry.make(a,"Title",1560,"Lol inc");
         Entry entry2 = Entry.make(a,"a",1560,"a");
         Entry entry3 = Entry.make(a,"a",1560,"a");

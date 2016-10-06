@@ -2,6 +2,8 @@ package person;
 
 import exceptions.IllegalNameException;
 
+import java.util.Objects;
+
 public class Author {
 
     private Name name;
@@ -10,19 +12,24 @@ public class Author {
         this.name = name;
     }
 
-    public Author(Author author) throws IllegalNameException {
-        new Author(new NameBuilder(author.getFirstName() + author.getLastName()).getName());
+    public Author(Author author) {
+        try {
+            this.name = new NameBuilder().addName(author.getFirstName()).addName(author.getLastName()).getName();
+        } catch (IllegalNameException e) {
+            e.printStackTrace();
+        }
     }
 
     public static Author make(String name) {
         try {
-            return new Author(new NameBuilder(name).getName());
+            NameBuilder n = new NameBuilder(name);
+            return new Author(n.getName());
         } catch (IllegalNameException e) {
             return null;
         }
     }
 
-    public static Author copy(Author author) {
+    static Author copy(Author author) {
         return Author.make(author.getFirstName() + " " +  author.getLastName());
     }
 
@@ -38,23 +45,8 @@ public class Author {
         return this.getLastName() + ", " + this.getFirstName().charAt(0);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        Author author = (Author) o;
-
-        return name != null ? name.equals(author.name) : author.name == null;
-
+    public boolean equals(Author o) {
+        return this == o || o != null && (name != null ? name.equals(o.name) : o.name == null);
     }
 
-    @Override
-    public int hashCode() {
-        return name != null ? name.hashCode() : 0;
-    }
 }
