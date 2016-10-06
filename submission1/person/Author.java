@@ -1,5 +1,7 @@
 package person;
 
+import exceptions.IllegalNameException;
+
 public class Author {
 
     private Name name;
@@ -8,12 +10,16 @@ public class Author {
         this.name = name;
     }
 
-    public Author(Author author) {
+    public Author(Author author) throws IllegalNameException {
         new Author(new NameBuilder(author.getFirstName() + author.getLastName()).getName());
     }
 
     public static Author make(String name) {
-        return new Author(new NameBuilder(name).getName());
+        try {
+            return new Author(new NameBuilder(name).getName());
+        } catch (IllegalNameException e) {
+            return null;
+        }
     }
 
     public String getLastName() {
@@ -22,6 +28,10 @@ public class Author {
 
     public String getFirstName() {
         return this.name.getFirstName();
+    }
+
+    public String show() {
+        return this.getLastName() + ", " + this.getFirstName().charAt(0);
     }
 
     @Override

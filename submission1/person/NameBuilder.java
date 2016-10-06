@@ -1,5 +1,7 @@
 package person;
 
+import exceptions.IllegalNameException;
+
 import java.util.Arrays;
 
 public class NameBuilder {
@@ -10,32 +12,38 @@ public class NameBuilder {
         this.name = new Name();
     }
 
-    public NameBuilder(String names) {
+    public NameBuilder(String names) throws IllegalNameException {
         this();
-        Arrays.asList(names.split(" ")).forEach(this::addName);
+        Arrays.asList(names.split(" ")).forEach(s -> {
+            try {
+                this.addName(s);
+            } catch (IllegalNameException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
-    public NameBuilder addPrefix(String prefix) {
+    public NameBuilder addPrefix(String prefix) throws IllegalNameException {
         if(prefix.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalNameException();
         } else {
             this.name.setPreFix(prefix);
             return this;
         }
     }
 
-    public NameBuilder addName(String name) {
+    public NameBuilder addName(String name) throws IllegalNameException {
         if(name.isEmpty() || Character.isLowerCase(name.charAt(0))) {
-            throw new IllegalArgumentException();
+            throw new IllegalNameException();
         } else {
             this.name.addName(name);
             return this;
         }
     }
 
-    public NameBuilder addPostFix(String postfix) {
+    public NameBuilder addPostFix(String postfix) throws IllegalNameException {
         if(postfix.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalNameException();
         } else {
             this.name.setPostFix(postfix);
             return this;
