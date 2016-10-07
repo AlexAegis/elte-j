@@ -1,49 +1,50 @@
 package person;
 
-import exceptions.IllegalNameException;
+import java.util.Arrays;
+import java.util.List;
 
 public class Author {
 
-    private Name name;
+    private String firstName;
+    private String lastName;
 
-    private Author(Name name) {
-        this.name = name;
+    private Author(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Author(Author author) {
-        try {
-            this.name = new NameBuilder().addName(author.getFirstName()).addName(author.getLastName()).getName();
-        } catch (IllegalNameException e) {
-        }
+        this(author.getFirstName(), author.getLastName());
     }
 
-    public static Author make(String name) {
-        try {
-            NameBuilder n = new NameBuilder(name);
-            return new Author(n.getName());
-        } catch (IllegalNameException e) {
+    public static Author make(String names) {
+        List<String> nameAsList = Arrays.asList(names.split(" "));
+        if(names.isEmpty() || !names.contains(" ") || nameAsList.size() != 2) {
             return null;
         }
-    }
-
-    static Author copy(Author author) {
-        return Author.make(author.getFirstName() + " " +  author.getLastName());
+        if(nameAsList.size() == 2 && Character.isLowerCase(nameAsList.get(0).charAt(0))
+                                    && Character.isLowerCase(nameAsList.get(1).charAt(0))){
+            return null;
+        }
+        return new Author(nameAsList.get(0), nameAsList.get(1));
     }
 
     public String getLastName() {
-        return this.name.getLastName();
+        return this.lastName;
     }
 
     public String getFirstName() {
-        return this.name.getFirstName();
+        return this.firstName;
     }
 
     public String show() {
         return this.getLastName() + ", " + this.getFirstName().charAt(0);
     }
 
-    public boolean equals(Author o) {
-        return this == o || o != null && (name != null ? name.equals(o.name) : o.name == null);
+    public boolean equals(Author author) {
+        return author != null
+                && author.getLastName().equals(this.getLastName())
+                && author.getFirstName().equals(this.getFirstName());
     }
 
 }
