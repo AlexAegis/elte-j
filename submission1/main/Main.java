@@ -1,23 +1,44 @@
 package main;
 
+
+import biblio.Bibliography;
 import biblio.Entry;
+import biblio.Query;
+import csv.CSV;
 import person.Author;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
-
     public static void main(String[] args) {
-        Author a = Author.make("John Maker");
-        System.out.println(a.show());
 
-        System.out.println(a.getLastName().equals("Maker"));
-        Entry entry1 = Entry.make(a,"Title",1560,"Lol inc");
-        Entry entry2 = Entry.make(a,"a",1560,"a");
-        Entry entry3 = Entry.make(a,"a",1560,"a");
-        System.out.println(entry1.getId());
-        System.out.println(entry2.getId());
-        System.out.println(entry3.getId());
+        List<String> params = Arrays.asList(args);
+        Bibliography bibliography = new Bibliography(CSV.read(new Scanner(System.in)));
 
-        System.out.println(entry1.show(1));
+        int format = 0;
+
+        if (params.contains("publisher=") && (params.size() > (params.lastIndexOf("publisher=") + 1))) {
+            bibliography.filter(Query.byPublisher(params.get(params.lastIndexOf("publisher=") + 1)));
+        }
+
+        if (params.contains("author=") && params.size() > params.lastIndexOf("author=") + 1) {
+            bibliography.filter(Query.byAuthor(Author.make(params.get(params.lastIndexOf("author=") + 1))));
+        }
+
+        if (params.contains("format=") && params.size() > params.lastIndexOf("format=") + 1) {
+            switch (params.get(params.lastIndexOf("format=") + 1)) {
+                case "raw" :  break;
+                case "authorYear" : format = 1;
+                    break;
+                case "authorYearCompact" : format = 2;
+                    break;
+                default:
+            }
+        }
+        System.out.print(bibliography.show(format));
+        Entry.resetId();
     }
 }

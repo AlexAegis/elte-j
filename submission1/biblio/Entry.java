@@ -70,7 +70,7 @@ public class Entry {
         } else if(format == FORMAT_AUTHOR_YEAR) {
             c = this.author.getLastName() + this.releaseYear;
         } else if(format == FORMAT_AUTHOR_YEAR_COMPACT) {
-            c = this.author.show().substring(0,2) + Integer.toString(this.releaseYear).substring(1,3);
+            c = this.author.show().substring(0,2) + Integer.toString(this.releaseYear).substring(2,4);
         }
 
         c = "[" + c + "] " + this.author.show() + ". " + this.title;
@@ -79,8 +79,6 @@ public class Entry {
         }
 
         c = c.concat(", " + this.releaseYear);
-
         return c;
     }
-
 }

@@ -1,4 +1,4 @@
-/*package tests;
+package tests;
 
 import java.util.Scanner;
 import csv.CSV;
@@ -40,4 +40,3 @@ public class CSVTest extends Testable {
         Test.main(new CSVTest());
     }
 }
-*/
