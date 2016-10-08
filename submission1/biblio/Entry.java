@@ -79,6 +79,7 @@ public class Entry {
         }
 
         c = c.concat(", " + this.releaseYear);
+
         return c;
     }
 }

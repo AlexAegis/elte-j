@@ -27,9 +27,9 @@ public class EntryTest extends Testable {
         check("show(): Nem jo a raw formazas.",
           e.show(Entry.FORMAT_RAW).equals("[0] Smith, J. Title of Book, Fancy Publishing House, 1999"));
         check("show(): Nem jo az authorYear formazas.",
-          e.show(Entry.FORMAT_AUTHOR_YEAR).equals("[Smith1678] Smith, J. Title of Book, Fancy Publishing House, 1999"));
+          e.show(Entry.FORMAT_AUTHOR_YEAR).equals("[Smith1999] Smith, J. Title of Book, Fancy Publishing House, 1999"));
         check("show(): Nem jo az authorYearCompact formazas.",
-          e.show(Entry.FORMAT_AUTHOR_YEAR_COMPACT).equals("[Sm78] Smith, J. Title of Book, Fancy Publishing House, 1999"));
+          e.show(Entry.FORMAT_AUTHOR_YEAR_COMPACT).equals("[Sm99] Smith, J. Title of Book, Fancy Publishing House, 1999"));
         check("show(): Ha nincs kiado, akkor nem kell megjelennie az eredmenyben.",
           f.show(Entry.FORMAT_RAW).equals("[1] Wilson, J. Yet Another Great Title, 2005"));
     }

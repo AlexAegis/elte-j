@@ -15,8 +15,8 @@ public class AuthorTest extends Testable {
         Author c = new Author(b);
         check("equals(): A konstruktorral nem masolodik le jol az objektum.", c.equals(b) && c.equals(a));
         Author d = Author.make("Jack Smith");
-        //check("equals(): Az eltero keresztneveket nem veszi eszre.", !a.equals(d));
-        //check("show(): Nem megfelelo eredmenyt ad.", a.show().equals("Smith, J"));
+        check("equals(): Az eltero keresztneveket nem veszi eszre.", !a.equals(d));
+        check("show(): Nem megfelelo eredmenyt ad.", a.show().equals("Smith, J"));
     }
 
     public String description() { return "person.Author"; }

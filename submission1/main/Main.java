@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
+        Entry.resetId();
         List<String> params = Arrays.asList(args);
         Bibliography bibliography = new Bibliography(CSV.read(new Scanner(System.in)));
 
@@ -29,15 +29,13 @@ public class Main {
 
         if (params.contains("format=") && params.size() > params.lastIndexOf("format=") + 1) {
             switch (params.get(params.lastIndexOf("format=") + 1)) {
-                case "raw" :  break;
                 case "authorYear" : format = 1;
                     break;
                 case "authorYearCompact" : format = 2;
                     break;
-                default:
+                default: break;
             }
         }
         System.out.print(bibliography.show(format));
-        Entry.resetId();
     }
 }
