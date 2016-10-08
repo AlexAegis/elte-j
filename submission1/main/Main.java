@@ -1,6 +1,5 @@
 package main;
 
-
 import biblio.Bibliography;
 import biblio.Entry;
 import biblio.Query;
