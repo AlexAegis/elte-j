@@ -1,6 +1,7 @@
 import utils.IntList;
 import utils.DoubleMatrix;
-import utils.
+import utils.IntTree;
+
 public class Main {
     public static void main(String[] args) {
         IntList l = new IntList(new int[]{1, 3});
@@ -19,6 +20,10 @@ public class Main {
 
 		System.out.println();
 		
-		IntTree it = new IntTree();
+		IntTree it = new IntTree(10);
+		it.insert(5).insert(12).insert(40);
+		if(it.contains(5)) {
+			System.out.println("it contains 5");
+		}
     }
 }
