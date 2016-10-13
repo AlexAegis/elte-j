@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.Arrays;
+
 public class IntTree {
 	
 	public final int value;
@@ -41,11 +43,32 @@ public class IntTree {
 		}
 	}
 	
-	public int[] toArray() {
-		return new int[]{};
+	public int[] toArray() { // TODO indexoutofbounds ex
+		int[] result = new int[this.size()];
+		int[] leftArray = this.left != null ? this.left.toArray() : new int[]{};		
+		int[] rightArray = this.right != null ? this.right.toArray() : new int[]{};
+		System.out.println("LOLOLOLOPL " + leftArray.length + " regerg " + rightArray.length);
+		for(int i = 0; i < result.length; i++) {
+			result[i] = (i <= leftArray.length) ? leftArray[i] : rightArray[i - leftArray.length - 1];
+		}
+		return result;
 	}
 	
 	public int size() {
 		return 1 + (this.left != null ? this.left.size() : 0) + (this.right != null ? this.right.size() : 0);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(obj.getClass() != this.getClass()) {
+			return false;
+		}
+		
+		IntTree it = (IntTree) obj;
+		
+		return Arrays.equals(it.toArray(), this.toArray());
 	}
 }

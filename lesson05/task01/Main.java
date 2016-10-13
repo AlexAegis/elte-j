@@ -28,6 +28,11 @@ public class Main {
 		}
 		System.out.println(it.size());
 		
+		int[] ita = it.toArray();
+		
+		for(int n : ita) {
+			System.out.println(n);
+		}
 		IntTreeTest.main(new String[]{});
 		
     }
