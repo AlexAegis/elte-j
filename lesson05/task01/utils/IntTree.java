@@ -35,9 +35,9 @@ public class IntTree {
 		if(this.value == x) {
 			return true;
 		} else if(x < this.value) {
-			return this.left.contains(x);
+			return this.left != null && this.left.contains(x);
 		} else {
-			return this.right.contains(x);
+			return this.left != null && this.right.contains(x);
 		}
 	}
 }

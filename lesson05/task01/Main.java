@@ -1,6 +1,7 @@
 import utils.IntList;
 import utils.DoubleMatrix;
 import utils.IntTree;
+import tests.IntTreeTest;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,5 +26,8 @@ public class Main {
 		if(it.contains(5)) {
 			System.out.println("it contains 5");
 		}
+		
+		IntTreeTest.main(new String[]{});
+		
     }
 }
