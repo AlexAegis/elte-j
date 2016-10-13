@@ -26,6 +26,7 @@ public class Main {
 		if(it.contains(5)) {
 			System.out.println("it contains 5");
 		}
+		System.out.println(it.size());
 		
 		IntTreeTest.main(new String[]{});
 		

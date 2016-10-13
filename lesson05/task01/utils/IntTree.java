@@ -40,4 +40,12 @@ public class IntTree {
 			return this.left != null && this.right.contains(x);
 		}
 	}
+	
+	public int[] toArray() {
+		return new int[]{};
+	}
+	
+	public int size() {
+		return 1 + (this.left != null ? this.left.size() : 0) + (this.right != null ? this.right.size() : 0);
+	}
 }
