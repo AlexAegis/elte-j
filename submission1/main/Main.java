@@ -28,9 +28,11 @@ public class Main {
 
 		if (params.contains("format=") && params.size() > params.lastIndexOf("format=") + 1) {
 			switch (params.get(params.lastIndexOf("format=") + 1)) {
-				case "authorYear" : format = 1;
+				case "raw" : format = Entry.FORMAT_RAW;
 					break;
-				case "authorYearCompact" : format = 2;
+				case "authorYear" : format = Entry.FORMAT_AUTHOR_YEAR;
+					break;
+				case "authorYearCompact" : format = Entry.FORMAT_AUTHOR_YEAR_COMPACT;
 					break;
 				default: break;
 			}

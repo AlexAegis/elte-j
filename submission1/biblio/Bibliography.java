@@ -13,6 +13,7 @@ public class Bibliography {
 	private List<Entry> entries;
 
 	public Bibliography(CSV csv) {
+		Entry.resetId();
 		entries = new ArrayList<>();
 		if(Arrays.stream(csv.getContents()).allMatch(line -> line.length == 4)) {
 			for (String[] line : csv.getContents()) {

@@ -43,7 +43,7 @@ public class Entry {
     }
 
     public Author getAuthor() {
-        return Author.make(author.getFirstName() + " " +  author.getLastName());
+        return new Author(author);
     }
 
     public String getTitle() {
