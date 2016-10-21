@@ -17,7 +17,7 @@ public class Entry {
     private int id = Entry.entryCount;
 
     private Entry(Author author, String title, int releaseYear, String publisher) {
-        this.author = author;
+        this.author = new Author(author);
         this.title = title;
         this.releaseYear = releaseYear;
         this.publisher = publisher;
