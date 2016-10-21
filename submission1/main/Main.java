@@ -13,7 +13,6 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		Entry.resetId();
 		List<String> params = Arrays.asList(args);
 		Bibliography bibliography = new Bibliography(CSV.read(new Scanner(System.in)));
 
