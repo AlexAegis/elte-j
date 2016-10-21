@@ -12,22 +12,26 @@ import java.util.Scanner;
 
 public class Main {
 
+	private static final String PARAM_PUBLISHER = "publisher=";
+	private static final String PARAM_AUTHOR = "author=";
+	private static final String PARAM_FORMAT = "format=";
+
 	public static void main(String[] args) {
 		List<String> params = Arrays.asList(args);
 		Bibliography bibliography = new Bibliography(CSV.read(new Scanner(System.in)));
 
 		int format = 0;
 
-		if (params.contains("publisher=") && (params.size() > (params.lastIndexOf("publisher=") + 1))) {
-			bibliography.filter(Query.byPublisher(params.get(params.lastIndexOf("publisher=") + 1)));
+		if (params.contains(PARAM_PUBLISHER) && (params.size() > (params.lastIndexOf(PARAM_PUBLISHER) + 1))) {
+			bibliography.filter(Query.byPublisher(params.get(params.lastIndexOf(PARAM_PUBLISHER) + 1)));
 		}
 
-		if (params.contains("author=") && params.size() > params.lastIndexOf("author=") + 1) {
-			bibliography.filter(Query.byAuthor(Author.make(params.get(params.lastIndexOf("author=") + 1))));
+		if (params.contains(PARAM_AUTHOR) && params.size() > params.lastIndexOf(PARAM_AUTHOR) + 1) {
+			bibliography.filter(Query.byAuthor(Author.make(params.get(params.lastIndexOf(PARAM_AUTHOR) + 1))));
 		}
 
-		if (params.contains("format=") && params.size() > params.lastIndexOf("format=") + 1) {
-			switch (params.get(params.lastIndexOf("format=") + 1)) {
+		if (params.contains(PARAM_FORMAT) && params.size() > params.lastIndexOf(PARAM_FORMAT) + 1) {
+			switch (params.get(params.lastIndexOf(PARAM_FORMAT) + 1)) {
 				case "raw" : format = Entry.FORMAT_RAW;
 					break;
 				case "authorYear" : format = Entry.FORMAT_AUTHOR_YEAR;
