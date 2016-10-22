@@ -15,16 +15,14 @@ public class Bibliography {
 	public Bibliography(CSV csv) {
 		Entry.resetId();
 		entries = new ArrayList<>();
-		if(Arrays.stream(csv.getContents()).allMatch(line -> line.length == 4)) {
-			for (String[] line : csv.getContents()) {
-				if (line[3].matches("^-?\\d+$")
-						&& Author.make(line[0]) != null) {
-					entries.add(
-							Entry.make(Author.make(line[0])
-									, line[1]
-									, Integer.parseUnsignedInt(line[3])
-									, line[2]));
-				}
+		for (String[] line : csv.getContents()) {
+			if (line.length == 4 
+					&& line[3].matches("^-?\\d+$")
+					&& Author.make(line[0]) != null) {
+				entries.add(Entry.make(Author.make(line[0])
+								, line[1]
+								, Integer.parseUnsignedInt(line[3])
+								, line[2]));
 			}
 		}
 	}

@@ -14,9 +14,11 @@ public class QueryTest extends Testable {
         Entry e = Entry.make(a, "Title of Book", 2000, "Random House");
         Entry f = Entry.make(b, "Modesty and Majesty", 1952, "Prentice Hall");
         Entry g = Entry.make(b, "Waging War with the World", 1909, "Random House");
+        Entry h = Entry.make(a, "New Title", 2002, "");
         check("accept(): Nem fogadja el a megadott szerzot.", q.accept(e));
         check("accept(): Nem fogadja el a megadott kiadot.", r.accept(f));
-        check("accept(): Elfogadja olyan bejegyzest, amelyet nem kellene.", !q.accept(g) && !r.accept(g));
+        check("accept(): Nem jol mukodik hianyzo kiado eseten.", q.accept(h) && !r.accept(h));
+        check("accept(): Elfogad olyan bejegyzest, amelyet nem kellene.", !q.accept(g) && !r.accept(g));
     }
 
     public String description() { return "biblio.Query"; }

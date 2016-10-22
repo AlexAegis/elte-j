@@ -13,6 +13,8 @@ public class EntryTest extends Testable {
         check("make(): Ures cimmel nem lehet objektumot letrehozni.", e == null);
         e = Entry.make(a, "Title of Book", 0, "");
         check("make(): Ervenytelen evvel nem lehet objektumot letrehozni.", e == null);
+        e = Entry.make(a, "Title of Book", 3000, "");
+        check("make(): Ervenytelen evvel nem lehet objektumot letrehozni.", e == null);
         e = Entry.make(a, "Title of Book", 1999, "Fancy Publishing House");
         check("make(): Szabalyos paramterekkel nem jott letre objektum", e != null);
         f = Entry.make(b, "Yet Another Great Title", 2005, "");
@@ -24,6 +26,10 @@ public class EntryTest extends Testable {
         check("getYear(): Nem jol mukodik.", f.getYear() == 2005);
         check("getPublisher(): Nem jol mukodik.", g.getPublisher().equals("Addison-Wesley"));
         check("count(): Nem jol szamolodnak az elemek.", Entry.count() == 3);
+        Entry.resetId();
+        g = Entry.make(b, "Something Very New", 2002, "");
+        check("A resetId() nem mukodik megfeleloen.",
+                e.getId() == 0 && f.getId() == 1 && g.getId() == 0);        
         check("show(): Nem jo a raw formazas.",
           e.show(Entry.FORMAT_RAW).equals("[0] Smith, J. Title of Book, Fancy Publishing House, 1999"));
         check("show(): Nem jo az authorYear formazas.",
@@ -32,6 +38,8 @@ public class EntryTest extends Testable {
           e.show(Entry.FORMAT_AUTHOR_YEAR_COMPACT).equals("[Sm99] Smith, J. Title of Book, Fancy Publishing House, 1999"));
         check("show(): Ha nincs kiado, akkor nem kell megjelennie az eredmenyben.",
           f.show(Entry.FORMAT_RAW).equals("[1] Wilson, J. Yet Another Great Title, 2005"));
+        check("show(): Nem jo az authorYearCompact formazas.",
+          f.show(Entry.FORMAT_AUTHOR_YEAR_COMPACT).equals("[Wi05] Wilson, J. Yet Another Great Title, 2005"));
     }
 
     public String description() { return "biblio.Entry"; }

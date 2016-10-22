@@ -18,15 +18,19 @@ public class Author {
 	}
 
 	public static Author make(String names) {
-		List<String> nameAsList = Arrays.asList(names.split(" "));
-		if(names.isEmpty() || !names.contains(" ") || nameAsList.size() != 2) {
+		String name = names.trim();
+		List<String> nameAsList = Arrays.asList(name.split(" "));
+		if(names.isEmpty() 
+			|| !name.contains(" ") 
+			|| nameAsList.size() != 2
+			|| nameAsList.get(0).length() < 1 
+			|| nameAsList.get(1).length() < 1
+			|| Character.isLowerCase(nameAsList.get(0).charAt(0))
+			|| Character.isLowerCase(nameAsList.get(1).charAt(0))) {
 			return null;
+		} else {
+			return new Author(nameAsList.get(0), nameAsList.get(1));
 		}
-		if(nameAsList.size() == 2 && Character.isLowerCase(nameAsList.get(0).charAt(0))
-									&& Character.isLowerCase(nameAsList.get(1).charAt(0))){
-			return null;
-		}
-		return new Author(nameAsList.get(0), nameAsList.get(1));
 	}
 
 	public String getLastName() {

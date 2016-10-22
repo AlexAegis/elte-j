@@ -7,6 +7,10 @@ public class AuthorTest extends Testable {
     public void assertion() {
         check("make(): Ures String eseten nem johet letre objektum.", Author.make("") == null);
         check("make(): Nem johet letre objektum, ha nincs ket resze a nevnek.", Author.make("Smith") == null);
+        check("make(): Nem johet letre objektum, ha a keresztnev ures.", Author.make(" Smith") == null);
+        check("make(): Nem johet letre objektum, ha a vezeteknev ures.", Author.make("John ") == null);
+        check("make(): Nem johet letre objektum, ha a keresztnev kisbetus.", Author.make("john Smith") == null);
+        check("make(): Nem johet letre objektum, ha a vezeteknev kisbetus.", Author.make("John smith") == null);
         Author a = Author.make("John Smith");
         check("getLastName(): Nem jol mukodik.", a.getLastName().equals("Smith"));
         check("getFirstName(): Nem jol mukodik.", a.getFirstName().equals("John"));
