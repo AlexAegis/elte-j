@@ -16,7 +16,7 @@ public class Part4 extends Testable {
         return (i >= list1.size());
     }
     public void assertion() {
-        try {
+
             Market m = new Market("fruits.txt");
             check("Market.buyCheapestFruit: a metodus nem a megfelelo gyumolcsot adja vissza.", m.buyCheapestFruit().show().equals("barack (55 Ft)"));
             check("Market.buyCheapestFruit: a metodus nem csokkenti a listat.", m.numberOfFruits() == 3);
@@ -37,9 +37,7 @@ public class Part4 extends Testable {
             check("Market.sale: a metodus nem megfelelo listat ad vissza.", checkFruitLists(m.sale(),expectedFruits));
             check("Market.sale: a metodus nem uriti ki a listat.", m.numberOfFruits() == 0);
             check("Market.sale: a metodus nem jol mukodik abban az esetben, ha nincsenek gyumolcsok.", m.sale().isEmpty());
-        } catch (Exception e) {
-            check("A Market konstruktora nem engedheti ki a kivetelt a metodusbol", false);
-        }
+
     }
 
     public String description() { return "4. resz"; }

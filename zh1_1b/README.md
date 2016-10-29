@@ -49,7 +49,7 @@ Az osztály egy gyümölcsöt reprezentál.
 
 *   Az osztály tartalmazzon egy `cheaperThan` metódust, ami eldönti, hogy az aktuális gyümölcs olcsóbb-e, mint a paraméterben kapott gyümölcs.
 
-*   Az osztályban legyen egy paraméter nélküli `show` metódus, amely visszaadja az objektum szöveges reprezentációját. A formátum legye a következő: `név (ár-ezres-tagolással Ft)` (ha az ár 1000-nél nagyobb, akkor ezres tagolásként egy szóközt kell használni, pl. `3 065`).
+*   Az osztályban legyen egy paraméter nélküli `show` metódus, amely visszaadja az objektum szöveges reprezentációját. A formátum legyen a következő: `név (ár-ezres-tagolással Ft)` (ha az ár 1000-nél nagyobb, akkor ezres tagolásként egy szóközt kell használni, pl. `3 065`).
 
 *   Az osztály tartalmazzon egy `cheapestFruit` nevű osztályszintű adattagot, ami a legolcsóbb gyümölcsöt tartalmazza, amit valaha létrehoztak (ha több ilyen van, akkor ezek közül az elsőt). Ha még nem hoztak létre `Fruit` objektumot, akkor az adattag értéke legyen `null`. Figyelj rá, hogy a konstruktor mindig aktualizálja ezt az objektumot, amikor az összes eddiginél olcsóbb gyümölcsöt hoz létre.
 
