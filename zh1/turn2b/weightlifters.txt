@@ -1,0 +1,16 @@
+Ivan Ivanov:120
+Foldi Imre:137
+Pablo Lara:25
+Aleksey Petrov:9
+
+BadInput
+BadInput:
+:BadInput
+:15
+A:15:TooManyColumn
+A:15
+AB,C:200
+ABC:-5
+ABC:0
+ABC:301
+Koji Miki:137
