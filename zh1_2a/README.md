@@ -8,7 +8,7 @@ Segédfüggvények létrehozhatóak, a feladatban nem megkötött adattagok és 
 
 A beadott megoldásodnak működnie kell a mellékelt tesztprogramokkal, de ez nem elégséges feltétele az elfogadásnak. A megírt forráskód legyen kellően általános és újrafelhasználható!
 
-Használható segédanyagok: [Java dokumentáció](/files/java/api/index.html), legfeljebb egy üres lap és toll. Ha bármilyen kérdés, észrevétel felmerül, azt a felügyelőknek kell jelezni, _NEM_ a diáktársaknak!
+Használható segédanyagok: [Java dokumentáció](https://bead.inf.elte.hu/files/java/Company-tests.zip), legfeljebb egy üres lap és toll. Ha bármilyen kérdés, észrevétel felmerül, azt a felügyelőknek kell jelezni, _NEM_ a diáktársaknak!
 
 _Figyelem!_ Az a metódus, mely fordítási hibát tartalmaz, automatikusan _nulla_ pontot ér!
 
@@ -61,7 +61,7 @@ Tesztelő: `tests.Part1`
 
 A `company.Contract` osztályba vegyük fel az alábbi nyilvános konstanst és metódusokat.
 
-*   Egy osztályszintű, `Contract` típusú konstanst `VADER` névvel. A munkavállaló legyen `Vader`, a munkáltató `Emperor`, a fizetés
+*   Egy osztályszintű, `Contract` típusú konstanst `VADER` névvel. A munkavállaló legyen `Vader`, a munkáltató `Emperor`, a fizetés 5000.
 *   Egy osztályszintű `make()` metódust, mely egy `String`-et vár, és egy `Contract`-ot ad vissza. A helyes paraméter két név és egy fizetés vesszővel elválasztva, például: `Gomboc Artur,Picur,200`. A `make()` vizsgálja meg az alábbiakat.
 
     1.  Megvan-e mindhárom rész.
