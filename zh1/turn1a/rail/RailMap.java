@@ -38,11 +38,9 @@ public class RailMap {
 
 	public List<String> getNeighbours(String city) {
 		List<String> result = new LinkedList<>();
-		railways.forEach(railway -> {
-			if(railway.hasEnd(city)) {
-				result.add(railway.getOtherCity(city));
-			}
-		});
+		railways.stream().filter(r -> r.hasEnd(city))
+						.map(r -> r.getOtherCity(city))
+						.forEach(result::add);
 		return result;
 	}
 
