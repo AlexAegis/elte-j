@@ -9,8 +9,8 @@ public class MySet<T> {
 		strore = new ArrayList[TABLE_SIZE];
 	}
 
-	public void add( T t) {
-
+	public void add(T t) {
+		//TODO
 	}
 
 	public T[] toArray() {
