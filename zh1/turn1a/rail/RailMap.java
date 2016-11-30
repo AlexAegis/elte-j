@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.io.File;
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 public class RailMap {
 	
@@ -37,11 +38,9 @@ public class RailMap {
 	}
 
 	public List<String> getNeighbours(String city) {
-		List<String> result = new LinkedList<>();
-		railways.stream().filter(r -> r.hasEnd(city))
+		return new LinkedList<>(railways.stream().filter(r -> r.hasEnd(city))
 						.map(r -> r.getOtherCity(city))
-						.forEach(result::add);
-		return result;
+						.collect(Collectors.toList()));
 	}
 
 	public String capitalCity() {
