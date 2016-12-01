@@ -38,9 +38,9 @@ public class Interval implements Comparable<Interval> {
 		return getEndTime().compareTo(interval.getEndTime()) <= 0
 	}
 
-	public boolean overLapsWith(Interval interval) { //CHECK
-		return !(getEndTime().compareTo(interval.getStartTime()) <= 0 ||
-				getStartTime().compareTo(interval.getEndTime()) >= 0);
+	public boolean overLapsWith(Interval interval) { //CHECK this yould be negated according to the task. If so, check ClassRoom::book
+		return getEndTime().compareTo(interval.getStartTime()) <= 0 ||
+				getStartTime().compareTo(interval.getEndTime()) >= 0;
 	}
 
 	@Override
