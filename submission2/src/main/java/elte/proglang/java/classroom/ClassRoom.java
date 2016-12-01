@@ -24,6 +24,13 @@ public abstract class ClassRoom {
 
 	public abstract boolean hasComputers();
 
+	public boolean book(Interval interval, String name) {
+		if(reservations.keySet().stream().allMatch(i -> i.overLapsWith(interval))) {
+			reservations.put(interval, name);
+			return true;
+		} else return false;
+	}
+
 	@Override
 	public String toString() {
         return "[" + reservations.entrySet().stream()
