@@ -1,5 +1,8 @@
 package elte.proglang.java.interval;
 
+import elte.proglang.java.interval.time.Day;
+import elte.proglang.java.interval.time.Time;
+
 public class Interval implements Comparable<Interval> {
 
 	private Day day;
@@ -35,10 +38,11 @@ public class Interval implements Comparable<Interval> {
 	}
 
 	public boolean endsBefore(Interval interval) {
-		return getEndTime().compareTo(interval.getEndTime()) <= 0
+		return getEndTime().compareTo(interval.getEndTime()) <= 0;
 	}
 
-	public boolean overLapsWith(Interval interval) { //CHECK this yould be negated according to the task. If so, check ClassRoom::book
+	//CHECK this should be negated according to the task. If so, check ClassRoom::book
+	public boolean overLapsWith(Interval interval) {
 		return getEndTime().compareTo(interval.getStartTime()) <= 0 ||
 				getStartTime().compareTo(interval.getEndTime()) >= 0;
 	}
@@ -52,7 +56,9 @@ public class Interval implements Comparable<Interval> {
 	public boolean equals(Object o) {
         if(this == o) return true;
         else if(o == null || getClass() != o.getClass()) return false;
-        return ((Interval) o).getDay() == day && ((Interval) o).getStartTime().equals(time) && ((Interval) o).getLength() == length;
+        return ((Interval) o).getDay() == day
+				&& ((Interval) o).getStartTime().equals(time)
+				&& ((Interval) o).getLength() == length;
 	}
 
 	@Override
@@ -64,8 +70,10 @@ public class Interval implements Comparable<Interval> {
     public int compareTo(Interval interval) { 
     	if(equals(interval)) return 0;
     	else if(getDay().ordinal() < interval.getDay().ordinal()
-    			|| getDay() == interval.getDay() && getStartTime().compareTo(interval.getStartTime() < 0) 
-    			|| getDay() == interval.getDay() && getStartTime().equals(interval.getStartTime() && getLength() < interval.getLength())) return 1;
+    			|| getDay() == interval.getDay() && getStartTime().compareTo(interval.getStartTime()) < 0
+    			|| getDay() == interval.getDay()
+					&& getStartTime().equals(interval.getStartTime())
+					&& getLength() < interval.getLength()) return 1;
     	else return -1;
     }
 }

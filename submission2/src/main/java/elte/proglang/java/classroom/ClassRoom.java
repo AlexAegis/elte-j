@@ -1,5 +1,10 @@
 package elte.proglang.java.classroom;
 
+import elte.proglang.java.interval.Interval;
+
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+
 public abstract class ClassRoom {
 
 	protected String name;
@@ -19,24 +24,10 @@ public abstract class ClassRoom {
 
 	public abstract boolean hasComputers();
 
-	public boolean book(Interval interval, String name) {
-		if(reservations.keySet().stream().anyMatch(Interval::overLapsWith)) return false;
-		else {
-			reservations.put(interval, name);
-			return true;
-		}
-	}
-	//  List<Integer> numbers = Arrays.asList(1, 2, 3, 4);
- 	// String commaSeparatedNumbers = numbers.stream()
-    //  .map(i -> i.toString())
-    //  .collect(Collectors.joining(", "));
-
-    // Stream.of(keyset, valueset)
-
-    // flatmap etc
-
 	@Override
 	public String toString() {
-		return "[" + reservations.
+        return "[" + reservations.entrySet().stream()
+                .map(e -> e.getKey().toString() + " (" + e.getValue() + ")")
+                .collect(Collectors.joining(", ")) + "]";
 	}
 }

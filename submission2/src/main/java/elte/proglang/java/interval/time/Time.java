@@ -21,9 +21,8 @@ public class Time implements Comparable<Time> {
     }
 
     @Override
-    public String toString() { // String.format("%02d", minute);
-        if(minute < 10) return hour + ":0" + minute;
-        else return hour + ":" + minute;
+    public String toString() {
+        return hour + String.format(":%02d", minute);
     }
 
     @Override
@@ -39,10 +38,9 @@ public class Time implements Comparable<Time> {
     }
 
     @Override
-    public int compareTo(Time o) { //check if this works (comparable interface now got a type)
-        //if(o == null || getClass() != o.getClass()) return 0;
-        if(((Time) o).hour > hour || ((Time) o).hour == hour && ((Time) o).minute > minute) return -1;
-        else if(((Time) o).hour < hour || ((Time) o).hour == hour && ((Time) o).minute < minute) return 1;
-        else return 0;
+    public int compareTo(Time time) {
+        if(equals(time)) return 0;
+        else if(time.hour < hour || time.hour == hour && time.minute < minute) return 1;
+        else return -1;
     }
 }
