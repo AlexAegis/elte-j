@@ -1,6 +1,6 @@
 package elte.proglang.java.interval.time;
 
-public class Time implements Comparable {
+public class Time implements Comparable<Time> {
 
     private int hour;
     private int minute;
@@ -21,7 +21,7 @@ public class Time implements Comparable {
     }
 
     @Override
-    public String toString() {
+    public String toString() { // String.format("%02d", minute);
         if(minute < 10) return hour + ":0" + minute;
         else return hour + ":" + minute;
     }
@@ -35,15 +35,14 @@ public class Time implements Comparable {
 
     @Override
     public int hashCode() {
-        return hour + minute;
+        return hour * minute + hour + minute;
     }
 
     @Override
-    public int compareTo(Object o) {
-        if(o == null || getClass() != o.getClass()) return 0;
+    public int compareTo(Time o) { //check if this works (comparable interface now got a type)
+        //if(o == null || getClass() != o.getClass()) return 0;
         if(((Time) o).hour > hour || ((Time) o).hour == hour && ((Time) o).minute > minute) return -1;
         else if(((Time) o).hour < hour || ((Time) o).hour == hour && ((Time) o).minute < minute) return 1;
         else return 0;
     }
-
 }
