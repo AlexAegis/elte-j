@@ -1,7 +1,7 @@
 import classroom.ComputerLab;
+import classroom.LectureRoom;
 import interval.Interval;
 import interval.time.Day;
-import interval.time.Time;
 
 import static org.junit.Assert.assertTrue;
 
@@ -9,7 +9,6 @@ public class Test {
 
     @org.junit.Test
     public void randomTesta() {
-        System.out.println(new ComputerLab("test", 25, 20).numberOfSpots());
 
     }
 

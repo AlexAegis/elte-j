@@ -18,6 +18,6 @@ public class LectureRoom extends ClassRoom {
 
     @Override
     public String toString() {
-        return "eloadoterem (" + name + ")" + super.toString();
+        return "eloadoterem (" + name + ") " + super.toString();
     }
 }
