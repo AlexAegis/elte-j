@@ -24,19 +24,21 @@ public class TimeTable {
     public void book(String name, Interval interval, int requestedSeats, boolean needsComputers) throws BookingException {
         boolean notFoundRoom = true;
         boolean noSuitableRoom = true;
-        for(ClassRoom cl : classRooms.stream().filter(classRoom -> accept(classRoom, requestedSeats, needsComputers)).collect(Collectors.toList())) {
-            noSuitableRoom = false;
+        for(ClassRoom cl : classRooms.stream()
+                .filter(classRoom -> accept(classRoom, requestedSeats, needsComputers)).collect(Collectors.toList())) {
+            notFoundRoom = false;
             if(cl.book(interval, name)) {
-                notFoundRoom = false;
+                noSuitableRoom = false;
                 break;
             }
         }
-        if(noSuitableRoom) throw new BookingException("There is no room of the specified type available in the given interval.");
         if(notFoundRoom) throw new BookingException("No room available in the given interval.");
+        if(noSuitableRoom) throw new BookingException("There is no room of the specified type available in the given interval.");
     }
 
     @Override
     public String toString() {
-        return classRooms.stream().map(ClassRoom::toString).collect(Collectors.joining("\n")) + "\n";
+        return classRooms.stream().map(ClassRoom::toString).collect(Collectors.joining("\n"))
+                + (classRooms.isEmpty() ? "" : "\n");
     }
 }
