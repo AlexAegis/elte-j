@@ -11,13 +11,13 @@ public class Time implements Comparable<Time> {
     }
 
     public static Time make(int hour, int minute) {
-        if(hour < 8 || hour > 18 || minute < 0 || minute > 59) return null;
+        if((hour < 8 || hour >= 18 || minute < 0 || minute >= 60) && (hour != 18 || minute != 0)) return null;
         else return new Time(hour, minute);
     }
 
     public Time add(int minutes) {
         if(minutes < 0) return null;
-        else return make(hour + minutes / 60, minute + minutes % 60);
+        else return make((((hour * 60) + minute + minutes) / 60) % 24, ((hour * 60) + minute + minutes) % 60);
     }
 
     @Override
