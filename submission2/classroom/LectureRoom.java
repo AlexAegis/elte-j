@@ -1,4 +1,4 @@
-package elte.proglang.java.classroom;
+package classroom;
 
 public class LectureRoom extends ClassRoom {
 

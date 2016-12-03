@@ -1,7 +1,7 @@
-package elte.proglang.java.timetable;
+package timetable;
 
-import elte.proglang.java.classroom.ClassRoom;
-import elte.proglang.java.interval.Interval;
+import classroom.ClassRoom;
+import interval.Interval;
 
 import java.util.ArrayList;
 import java.util.List;

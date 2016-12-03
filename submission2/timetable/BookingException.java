@@ -1,4 +1,4 @@
-package elte.proglang.java.timetable;
+package timetable;
 
 public class BookingException extends Exception {
 

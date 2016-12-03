@@ -1,7 +1,7 @@
-package elte.proglang.java.interval;
+package interval;
 
-import elte.proglang.java.interval.time.Day;
-import elte.proglang.java.interval.time.Time;
+import interval.time.Day;
+import interval.time.Time;
 
 public class Interval implements Comparable<Interval> {
 
@@ -49,7 +49,7 @@ public class Interval implements Comparable<Interval> {
 
 	@Override
 	public String toString() {
-		return day.toString() + " " + time.toString() + " - " + time.add(length).toString();
+		return day + " " + time + " - " + time.add(length);
 	}
 
 	@Override

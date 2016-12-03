@@ -1,6 +1,6 @@
-package elte.proglang.java.classroom;
+package classroom;
 
-import elte.proglang.java.interval.Interval;
+import interval.Interval;
 
 import java.util.TreeMap;
 import java.util.stream.Collectors;

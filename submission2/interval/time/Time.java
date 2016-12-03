@@ -1,4 +1,4 @@
-package elte.proglang.java.interval.time;
+package interval.time;
 
 public class Time implements Comparable<Time> {
 
