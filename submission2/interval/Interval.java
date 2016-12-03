@@ -38,13 +38,25 @@ public class Interval implements Comparable<Interval> {
 	}
 
 	public boolean endsBefore(Interval interval) {
-		return getEndTime().compareTo(interval.getEndTime()) <= 0;
+		return getDay().ordinal() < interval.getDay().ordinal()
+				|| (getDay().ordinal() == interval.getDay().ordinal() && getEndTime().compareTo(interval.getStartTime()) <= 0);
 	}
 
-	//CHECK this should be negated according to the task. If so, check ClassRoom::book
-	public boolean overLapsWith(Interval interval) {
-		return getEndTime().compareTo(interval.getStartTime()) <= 0 ||
-				getStartTime().compareTo(interval.getEndTime()) >= 0;
+	public boolean overlapsWith(Interval interval) {
+		return getDay().ordinal() == interval.getDay().ordinal()
+				&& ((getStartTime().compareTo(interval.getStartTime()) < 0 && interval.getStartTime().compareTo(getEndTime()) < 0)
+					|| (interval.getStartTime().compareTo(getStartTime()) < 0 && getStartTime().compareTo(interval.getEndTime()) < 0));
+	}
+
+	@Override
+	public int compareTo(Interval interval) {
+		if(equals(interval)) return 0;
+		else if(getDay().ordinal() < interval.getDay().ordinal()
+				|| getDay() == interval.getDay() && getStartTime().compareTo(interval.getStartTime()) < 0
+				|| getDay() == interval.getDay()
+				&& getStartTime().equals(interval.getStartTime())
+				&& getLength() < interval.getLength()) return -1;
+		else return 1;
 	}
 
 	@Override
@@ -65,15 +77,4 @@ public class Interval implements Comparable<Interval> {
 	public int hashCode() {
 		return time.hashCode() * length + day.toString().hashCode();
 	}
-
-    @Override
-    public int compareTo(Interval interval) { 
-    	if(equals(interval)) return 0;
-    	else if(getDay().ordinal() < interval.getDay().ordinal()
-    			|| getDay() == interval.getDay() && getStartTime().compareTo(interval.getStartTime()) < 0
-    			|| getDay() == interval.getDay()
-					&& getStartTime().equals(interval.getStartTime())
-					&& getLength() < interval.getLength()) return 1;
-    	else return -1;
-    }
 }
