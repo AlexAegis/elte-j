@@ -4,7 +4,7 @@
 
     <groupId>elte.proglang.java</groupId>
     <artifactId>submission2</artifactId>
-    <version>0.0.1</version>
+    <version>1.0.0</version>
     <packaging>maven-archetype</packaging>
 
     <name>submission2</name>
@@ -40,7 +40,7 @@
         <outputDirectory>target/classes</outputDirectory>
         <finalName>${project.artifactId}-${project.version}</finalName>
         <testOutputDirectory>target/test-classes</testOutputDirectory>
-        <sourceDirectory>/</sourceDirectory>
+        <sourceDirectory>.</sourceDirectory>
         <testSourceDirectory>tests</testSourceDirectory>
 
         <extensions>
