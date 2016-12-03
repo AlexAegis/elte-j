@@ -11,7 +11,7 @@ public class ComputerLab extends ClassRoom {
 
     @Override
     public int numberOfSpots() {
-        return (int) Math.max(seats, computers * 1.1);
+        return (int) Math.min(seats, computers * 1.1);
     }
 
     @Override

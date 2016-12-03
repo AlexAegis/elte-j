@@ -1,3 +1,4 @@
+import classroom.ComputerLab;
 import interval.Interval;
 import interval.time.Day;
 import interval.time.Time;
@@ -8,9 +9,7 @@ public class Test {
 
     @org.junit.Test
     public void randomTesta() {
-        System.out.println(Interval.make(Day.WEDNESDAY,9,0,60).getEndTime().toString());
-        assertTrue(Interval.make(Day.WEDNESDAY,9,0,60).equals(Interval.make(Day.WEDNESDAY,9,0,60)));
-        assertTrue(Interval.make(Day.WEDNESDAY,9,0,60).overlapsWith(Interval.make(Day.WEDNESDAY,9,0,60)));
+        System.out.println(new ComputerLab("test", 25, 20).numberOfSpots());
 
     }
 
