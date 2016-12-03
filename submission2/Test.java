@@ -1,9 +1,18 @@
 import interval.Interval;
 import interval.time.Day;
+import interval.time.Time;
 
 import static org.junit.Assert.assertTrue;
 
 public class Test {
+
+    @org.junit.Test
+    public void randomTesta() {
+        System.out.println(Interval.make(Day.WEDNESDAY,9,0,60).getEndTime().toString());
+        assertTrue(Interval.make(Day.WEDNESDAY,9,0,60).equals(Interval.make(Day.WEDNESDAY,9,0,60)));
+        assertTrue(Interval.make(Day.WEDNESDAY,9,0,60).overlapsWith(Interval.make(Day.WEDNESDAY,9,0,60)));
+
+    }
 
     @org.junit.Test
     public void randomTest() {
@@ -83,5 +92,10 @@ public class Test {
     @org.junit.Test
     public void randomTest16() {
         assertTrue(Interval.make(Day.WEDNESDAY,9,30,60).overlapsWith(Interval.make(Day.WEDNESDAY,9,0,60)));
+    }
+
+    @org.junit.Test
+    public void randomTest17() {
+        assertTrue(Interval.make(Day.WEDNESDAY,9,0,60).overlapsWith(Interval.make(Day.WEDNESDAY,9,0,60)));
     }
 }

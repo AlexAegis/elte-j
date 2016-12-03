@@ -44,8 +44,9 @@ public class Interval implements Comparable<Interval> {
 
 	public boolean overlapsWith(Interval interval) {
 		return getDay().ordinal() == interval.getDay().ordinal()
-				&& ((getStartTime().compareTo(interval.getStartTime()) < 0 && interval.getStartTime().compareTo(getEndTime()) < 0)
-					|| (interval.getStartTime().compareTo(getStartTime()) < 0 && getStartTime().compareTo(interval.getEndTime()) < 0));
+				&& (equals(interval)
+					|| ((getStartTime().compareTo(interval.getStartTime()) < 0 && interval.getStartTime().compareTo(getEndTime()) < 0)
+						|| (interval.getStartTime().compareTo(getStartTime()) < 0 && getStartTime().compareTo(interval.getEndTime()) < 0)));
 	}
 
 	@Override

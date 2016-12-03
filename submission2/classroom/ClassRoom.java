@@ -25,7 +25,7 @@ public abstract class ClassRoom {
 	public abstract boolean hasComputers();
 
 	public boolean book(Interval interval, String name) {
-		if(reservations.keySet().stream().allMatch(i -> i.overlapsWith(interval))) {
+		if(reservations.keySet().stream().noneMatch(i -> i.overlapsWith(interval))) {
 			reservations.put(interval, name);
 			return true;
 		} else return false;
