@@ -10,15 +10,18 @@ import java.io.FileNotFoundException;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
+
+
         Results results = Factory.createResults(); // Swimming
-        results.readFromFile("resources/input.txt");
+        //results.readFromFile("resources/input.txt");
         Ranking<Medals> ranking = results.rankNationsByGoldFirst();
-        results.addResult("gyors 50m", "x", "Magyarország", 1);
-        results.addResult("gyors 50m", "y", "USA", 2);
-        results.addResult("gyors 50m", "z", "USA", 3);
-        System.out.println(ranking.getPointsOf("Magyarország"));    //  <1, 0, 0>
-        System.out.println(ranking.getPointsOf("USA"));             //  <0, 1, 1>
+        results.addResult("50 m gyors", "Asd Asd", "Magyarorszag", 1);
+        results.addResult("50 m gyors", "Asd Asd", "Egyesult Allamok", 2);
+        results.addResult("50 m gyors", "Asd Asd", "Egyesult Allamok", 3);
+        System.out.println(ranking.getPointsOf("Magyarorszag"));    //  <1, 0, 0>
+        System.out.println(ranking.getPointsOf("Egyesult Allamok"));             //  <0, 1, 1>
         System.out.println(ranking.getRanking());                          // [Magyarország, USA]
+        ranking.getNations().forEach(System.out::println);
 
     }
 

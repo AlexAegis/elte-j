@@ -25,6 +25,9 @@ public class CategoryTest {
     private static Category category;
     private static Method categoryValidator;
 
+    @Parameter    public String input;
+    @Parameter(1) public boolean expected;
+
     @BeforeClass
     public static void setUp() throws Exception {
         Constructor constructor = Category.class.getConstructor(Length.class, SwimCategory.class);
@@ -54,12 +57,6 @@ public class CategoryTest {
                 {"411 m ferfi hat", false},
                 {"", false}});
     }
-
-    @Parameter
-    public String input;
-
-    @Parameter(1)
-    public boolean expected;
 
     @Test
     public void test() throws Exception {

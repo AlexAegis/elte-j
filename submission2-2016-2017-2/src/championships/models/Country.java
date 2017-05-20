@@ -37,4 +37,9 @@ public enum Country implements Validable<String> {
         return equals(ANY) ? Arrays.stream(values()).anyMatch(sw -> !sw.equals(ANY) && sw.valid(s))
                 : s.chars().allMatch(Character::isLetter) && getRepresentation().equals(s);
     }
+
+    @Override
+    public String toString() {
+        return representation;
+    }
 }

@@ -44,11 +44,27 @@ public class Category implements Validable<String> {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Category category = (Category) o;
+
+        if (length != category.length) return false;
+        if (gender != category.gender) return false;
+        return swimCategory == category.swimCategory;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = length != null ? length.hashCode() : 0;
+        result = 31 * result + (gender != null ? gender.hashCode() : 0);
+        result = 31 * result + (swimCategory != null ? swimCategory.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
-        return "Category{" +
-                "length=" + length +
-                ", gender=" + gender +
-                ", swimCategory=" + swimCategory +
-                '}';
+        return length + " " + gender + (gender != null ? " " : "") + swimCategory;
     }
 }

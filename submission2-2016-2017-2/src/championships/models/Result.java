@@ -1,14 +1,16 @@
 package championships.models;
 
+import championships.results.Participant;
+
 public class Result implements Comparable<Result> {
 
     private Category category;
-    private Swimmer swimmer;
+    private Participant participant;
     private int score;
 
-    public Result(Category category, Swimmer swimmer, int score) {
+    public Result(Category category, Participant participant, int score) {
         this.category = category;
-        this.swimmer = swimmer;
+        this.participant = participant;
         this.score = score;
     }
 
@@ -16,8 +18,8 @@ public class Result implements Comparable<Result> {
         return category;
     }
 
-    public Swimmer getSwimmer() {
-        return swimmer;
+    public Participant getParticipant() {
+        return participant;
     }
 
     public int getScore() {
@@ -28,7 +30,7 @@ public class Result implements Comparable<Result> {
     public String toString() {
         return "Result{" +
                 "category=" + category +
-                ", swimmer=" + swimmer +
+                ", participant=" + participant +
                 ", score=" + score +
                 '}';
     }

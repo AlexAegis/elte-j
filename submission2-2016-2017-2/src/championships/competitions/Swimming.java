@@ -8,10 +8,8 @@ import championships.results.ranking.Ranking;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Swimming implements Results {
 
@@ -19,32 +17,68 @@ public class Swimming implements Results {
 
     @Override
     public void addResult(String event, String name, String nation, int place) throws IllegalArgumentException {
-
+        Swimmer swimmer = Swimmer.createSwimmer(name, nation);
+        if(swimmer == null) throw new IllegalArgumentException("invalid swimmer");
+        else addResult(event, swimmer, place);
     }
 
     @Override
     public void addResult(String event, Participant participant, int place) throws IllegalArgumentException {
-
+        Category category = Category.createCategory(event);
+        if(category == null) throw new IllegalArgumentException();
+        if(results.stream()
+                .filter(result -> result.getCategory().equals(category))
+                .anyMatch(result -> result.getScore() == place)) {
+            throw new IllegalArgumentException(place + " already occupied in " + event);
+        }
+        if(place <= 0) throw new IllegalArgumentException("place cannot be negative");
+        else results.add(new Result(Category.createCategory(event), participant, place));
     }
 
     @Override
     public List<Participant> getResultsOf(String event) {
-        return null;
+        return results.stream()
+                .filter(result -> result.getCategory().equals(Category.createCategory(event)))
+                .sorted()
+                .map(Result::getParticipant)
+                .collect(Collectors.toList());
     }
 
     @Override
     public Map<String, List<Participant>> getResultsOfAll() {
-        return null;
+        return getAllEvents().stream().collect(Collectors.toMap(s -> s, this::getResultsOf));
     }
 
     @Override
     public Ranking<Integer> rankNationsByTotalMedals() {
-        return null;
+        return new SwimmerScoreRanking(this);
     }
 
     @Override
     public Ranking<Medals> rankNationsByGoldFirst() {
-        return null;
+        return new SwimmerMedalRanking(this);
+    }
+
+    public List<Result> getResults() {
+        return results;
+    }
+
+    public List<Result> getResultsByNation(String nation) {
+        return results.stream()
+                .filter(result -> result.getParticipant().getNation().equals(nation))
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getAllEvents() {
+        return results.stream()
+                .map(Result::getCategory)
+                .distinct()
+                .map(Category::toString)
+                .collect(Collectors.toList());
+    }
+
+    public List<Participant> getParticipants() {
+        return results.stream().map(Result::getParticipant).distinct().collect(Collectors.toList());
     }
 
     @Override
@@ -54,11 +88,12 @@ public class Swimming implements Results {
                 String line = scanner.nextLine();
                 String[] split = line.split(";");
                 if(!line.startsWith("//") && split.length == 4 && split[3].chars().allMatch(Character::isDigit)) {
-                    Category category = Category.createCategory(split[0]);
-                    Swimmer swimmer = Swimmer.createSwimmer(split[1], split[2]);
-                    if (category != null && swimmer != null) {
-                        results.add(new Result(category, swimmer, Integer.parseInt(split[3])));
+                    try {
+                        addResult(split[0], split[1], split[2], Integer.parseInt(split[3]));
+                    } catch (IllegalArgumentException e) {
+                        //e.printStackTrace();
                     }
+
                 }
             }
         }

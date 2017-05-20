@@ -14,7 +14,11 @@ public class Swimmer implements Participant {
     }
 
     public static Swimmer createSwimmer(String name, String country) {
-        return createSwimmer(name, Country.getCountry(country));
+        try {
+            return createSwimmer(name, Country.getCountry(country));
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
     }
 
     public static Swimmer createSwimmer(String name, Country country) {
@@ -24,11 +28,37 @@ public class Swimmer implements Participant {
 
     @Override
     public String getName() {
-        return country.getRepresentation();
+        return name;
     }
 
     @Override
     public String getNation() {
-        return name;
+        return country.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Swimmer{" +
+                "name='" + name + '\'' +
+                ", country=" + country +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Swimmer swimmer = (Swimmer) o;
+
+        if (name != null ? !name.equals(swimmer.name) : swimmer.name != null) return false;
+        return country == swimmer.country;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (country != null ? country.hashCode() : 0);
+        return result;
     }
 }

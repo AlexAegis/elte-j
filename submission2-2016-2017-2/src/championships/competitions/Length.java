@@ -44,4 +44,9 @@ public enum Length implements Validable<String> {
                     && split[1].equals(M)
                     && getRepresentation().equals(s);
     }
+
+    @Override
+    public String toString() {
+        return representation;
+    }
 }
