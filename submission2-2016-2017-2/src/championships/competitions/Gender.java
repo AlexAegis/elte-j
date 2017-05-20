@@ -1,16 +1,13 @@
-package championships.results.models;
-
-import championships.results.competitions.Validable;
+package championships.competitions;
 
 import java.util.Arrays;
 
-public enum Country implements Validable<String> {
-    USA("Egyesult Allamok"),
-    HUNGARY("Magyarorszag"),
-    FRANCE("Franciaorszag"),
+public enum Gender implements Validable<String>{
+    MALE("ferfi"),
+    FEMALE("noi"),
     ANY("");
 
-    public static Country getCountry(String s) {
+    public static Gender getGender(String s) {
         return Arrays.stream(values())
                 .filter(gender -> gender.getRepresentation().equals(s))
                 .findFirst()
@@ -19,7 +16,7 @@ public enum Country implements Validable<String> {
 
     private String representation;
 
-    Country(String representation) {
+    Gender(String representation) {
         this.representation = representation;
     }
 

@@ -1,6 +1,6 @@
 package championships.results;
 
-import championships.results.competitions.Swimming;
+import championships.competitions.Swimming;
 
 /**
  * Ez az osztály a rendszer belépési pontja. Nem példányosítható, egyetlen célja, hogy

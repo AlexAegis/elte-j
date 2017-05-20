@@ -88,8 +88,8 @@ public interface Results {
      *
      *         String event = ...
      *         Results result = ...
-     *         List <Participant> list1 = results.getResultsOf(event);
-     *         List <Participant> list2 = results.getResultsOfAll().get(event);
+     *         List <Swimmer> list1 = results.getResultsOf(event);
+     *         List <Swimmer> list2 = results.getResultsOfAll().get(event);
      *
      * Ebben az esetben a két lista egyenlő kell, hogy legyen, tehát ugyanazokat az
      * elemeket kell tárolniuk, ugyanolyan sorrendben.

@@ -1,4 +1,4 @@
-package championships.results.competitions;
+package championships.competitions;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package championships.results.competitions;
+package championships.competitions;
 
 public interface Validable<T> {
 

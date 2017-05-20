@@ -1,9 +1,9 @@
-package championships.results.models;
+package championships.models;
 
-import championships.results.competitions.Gender;
-import championships.results.competitions.Length;
-import championships.results.competitions.SwimCategory;
-import championships.results.competitions.Validable;
+import championships.competitions.Gender;
+import championships.competitions.Length;
+import championships.competitions.SwimCategory;
+import championships.competitions.Validable;
 
 public class Category implements Validable<String> {
 

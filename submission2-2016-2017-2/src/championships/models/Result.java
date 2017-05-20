@@ -1,16 +1,14 @@
-package championships.results.models;
+package championships.models;
 
 public class Result implements Comparable<Result> {
 
     private Category category;
-    private String name;
-    private Country country;
+    private Swimmer swimmer;
     private int score;
 
-    public Result(Category category, String name, Country country, int score) {
+    public Result(Category category, Swimmer swimmer, int score) {
         this.category = category;
-        this.name = name;
-        this.country = country;
+        this.swimmer = swimmer;
         this.score = score;
     }
 
@@ -18,12 +16,8 @@ public class Result implements Comparable<Result> {
         return category;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Country getCountry() {
-        return country;
+    public Swimmer getSwimmer() {
+        return swimmer;
     }
 
     public int getScore() {
@@ -34,8 +28,7 @@ public class Result implements Comparable<Result> {
     public String toString() {
         return "Result{" +
                 "category=" + category +
-                ", name='" + name + '\'' +
-                ", country=" + country +
+                ", swimmer=" + swimmer +
                 ", score=" + score +
                 '}';
     }

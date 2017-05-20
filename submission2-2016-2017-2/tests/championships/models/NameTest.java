@@ -5,8 +5,6 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collection;
 
-import championships.results.competitions.Swimming;
-import championships.results.models.Name;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

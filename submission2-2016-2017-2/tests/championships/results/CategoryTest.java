@@ -1,13 +1,18 @@
 package championships.results;
 
-import championships.results.competitions.Swimming;
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import championships.competitions.Length;
+import championships.competitions.SwimCategory;
+import championships.models.Category;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.junit.runners.Parameterized.Parameter;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collection;
@@ -15,9 +20,19 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class SwimmingTest {
+public class CategoryTest {
 
-    private Swimming swimming = new Swimming();
+    private static Category category;
+    private static Method categoryValidator;
+
+    @BeforeClass
+    public static void setUp() throws Exception {
+        Constructor constructor = Category.class.getConstructor(Length.class, SwimCategory.class);
+        constructor.setAccessible(true);
+        category = (Category) constructor.newInstance(Length.ANY, SwimCategory.ANY);
+        categoryValidator = Category.class.getDeclaredMethod("valid", String.class);
+        categoryValidator.setAccessible(true);
+    }
 
     @Parameters
     public static Collection<Object[]> data() {
@@ -48,9 +63,7 @@ public class SwimmingTest {
 
     @Test
     public void test() throws Exception {
-        Method categoryValidator = Swimming.class.getDeclaredMethod("validateCategory", String.class);
-        categoryValidator.setAccessible(true);
-        boolean result = (boolean) categoryValidator.invoke(swimming, input);
+        boolean result = (boolean) categoryValidator.invoke(category, input);
         assertEquals("failed assertion on: " + input, expected, result);
     }
 }

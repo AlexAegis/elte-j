@@ -1,6 +1,6 @@
-package championships.results.models;
+package championships.models;
 
-import championships.results.competitions.Validable;
+import championships.competitions.Validable;
 
 import java.util.Arrays;
 

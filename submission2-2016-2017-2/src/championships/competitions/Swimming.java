@@ -1,21 +1,21 @@
-package championships.results.competitions;
+package championships.competitions;
 
+import championships.models.*;
 import championships.results.Participant;
-import championships.results.models.Category;
-import championships.results.models.Result;
 import championships.results.Results;
-import championships.results.models.Country;
-import championships.results.models.Name;
 import championships.results.ranking.Medals;
 import championships.results.ranking.Ranking;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Swimming implements Results {
+
+    private List<Result> results = new ArrayList<>();
 
     @Override
     public void addResult(String event, String name, String nation, int place) throws IllegalArgumentException {
@@ -53,20 +53,14 @@ public class Swimming implements Results {
             while(scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] split = line.split(";");
-                if(!line.startsWith("//")
-                        && split.length == 4
-                        && Name.ANY.valid(split[1])
-                        && Country.ANY.valid(split[2])
-                        && split[3].chars().allMatch(Character::isDigit)) {
+                if(!line.startsWith("//") && split.length == 4 && split[3].chars().allMatch(Character::isDigit)) {
                     Category category = Category.createCategory(split[0]);
-                    if (category != null) {
-                        Result result = new Result(category, split[1], Country.getCountry(split[2]), Integer.parseInt(split[3]));
-                        System.out.println(result.toString());
+                    Swimmer swimmer = Swimmer.createSwimmer(split[1], split[2]);
+                    if (category != null && swimmer != null) {
+                        results.add(new Result(category, swimmer, Integer.parseInt(split[3])));
                     }
-
                 }
             }
         }
     }
-
 }
