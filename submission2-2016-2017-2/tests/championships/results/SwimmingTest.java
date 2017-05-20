@@ -36,6 +36,7 @@ public class SwimmingTest {
                 {"51 m noi pillango", false},
                 {"m pillango", false},
                 {"m ferfi hat", false},
+                {"411 m ferfi hat", false},
                 {"", false}});
     }
 

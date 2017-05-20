@@ -1,8 +1,11 @@
 package championships.results.competitions;
 
+import java.util.Arrays;
+
 public enum Gender implements Validable<String>{
     MALE("ferfi"),
-    FEMALE("noi");
+    FEMALE("noi"),
+    ANY("");
 
     private String representation;
 
@@ -14,9 +17,14 @@ public enum Gender implements Validable<String>{
         return representation;
     }
 
+    /**
+     * Validator, if called on an ANY it iterates through all the others
+     * @param s input
+     * @return true if its matches any of the categories
+     */
     @Override
-    public boolean valid(String gender) {
-        return gender.chars().allMatch(Character::isLetter)
-                && getRepresentation().equals(gender);
+    public boolean valid(String s) {
+        return equals(ANY) ? Arrays.stream(values()).anyMatch(sw -> !sw.equals(ANY) && sw.valid(s))
+                : s.chars().allMatch(Character::isLetter) && getRepresentation().equals(s);
     }
 }

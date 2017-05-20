@@ -2,6 +2,7 @@ package championships.results.competitions;
 
 import championships.results.Participant;
 import championships.results.Results;
+import championships.results.models.Name;
 import championships.results.ranking.Medals;
 import championships.results.ranking.Ranking;
 
@@ -53,7 +54,7 @@ public class Swimming implements Results {
                 if(!line.startsWith("//")
                         && splittedLine.length == 4
                         && validateCategory(splittedLine[0])
-                        && splittedLine[1].chars().allMatch(Character::isLetter)
+                        && Name.ANY.valid(splittedLine[1])
                         && splittedLine[2].chars().allMatch(Character::isLetter)
                         && splittedLine[3].chars().allMatch(Character::isDigit)) {
                     System.out.println(splittedLine[0]);
@@ -72,12 +73,8 @@ public class Swimming implements Results {
      */
     private boolean validateCategory(String string) {
         String[] split = string.split(" ");
-        return split.length >= 3
-                && Arrays.stream(Length.values()).anyMatch(length -> length.valid(split[0] + " " + split[1]))
-                    && (split.length == 3
-                            && Arrays.stream(SwimCategory.values()).anyMatch(swimCategory -> swimCategory.valid(split[2]))
-                        || (split.length == 4
-                            && Arrays.stream(Gender.values()).anyMatch(gender -> gender.valid(split[2]))
-                            && Arrays.stream(SwimCategory.values()).anyMatch(swimCategory -> swimCategory.valid(split[3]))));
+        return split.length >= 3 && Length.ANY.valid(split[0] + " " + split[1])
+                    && ((split.length == 3 && SwimCategory.ANY.valid(split[2]))
+                        || (split.length == 4 && Gender.ANY.valid(split[2]) && SwimCategory.ANY.valid(split[3])));
     }
 }

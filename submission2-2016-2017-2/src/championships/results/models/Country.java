@@ -2,10 +2,13 @@ package championships.results.models;
 
 import championships.results.competitions.Validable;
 
-public enum Country implements Validable<Country> {
-    UNITEDSTATES("Egyesult Allamok"),
+import java.util.Arrays;
+
+public enum Country implements Validable<String> {
+    USA("Egyesult Allamok"),
     HUNGARY("Magyarorszag"),
-    FRANCE("Franciaorszag");
+    FRANCE("Franciaorszag"),
+    ANY("");
 
     private String representation;
 
@@ -17,8 +20,14 @@ public enum Country implements Validable<Country> {
         return representation;
     }
 
+    /**
+     * Validator, if called on an ANY it iterates through all the others
+     * @param s input
+     * @return true if its matches any of the categories
+     */
     @Override
-    public boolean valid(Country object) {
-        return representation.equals(object.getRepresentation());
+    public boolean valid(String s) {
+        return equals(ANY) ? Arrays.stream(values()).anyMatch(sw -> !sw.equals(ANY) && sw.valid(s))
+                : s.chars().allMatch(Character::isLetter) && getRepresentation().equals(s);
     }
 }
