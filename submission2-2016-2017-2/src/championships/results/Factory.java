@@ -1,10 +1,19 @@
 package championships.results;
 
+import championships.results.competitions.Swimming;
+
 /**
  * Ez az osztály a rendszer belépési pontja. Nem példányosítható, egyetlen célja, hogy
  * a createResults() osztályszintű metódusa segítségével példányosítható legyen a Results interfész.
  */
 public final class Factory {
+
+    /**
+     * Konstruktor privátra állítva, hogy megelőzzük az osztály példányosítását
+     */
+    private Factory() {
+
+    }
 
     /**
      * Visszaad egy új objektumot, mely megvalósítja a Results interfészt.
@@ -14,7 +23,7 @@ public final class Factory {
      * @return egy új objektum, mely megvalósítja a Results interfészt
      */
     public static Results createResults() {
-        return null;
+        return new Swimming();
     }
 
 }

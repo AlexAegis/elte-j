@@ -5,6 +5,7 @@ import championships.results.ranking.Medals;
 import championships.results.ranking.Ranking;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +20,8 @@ import java.util.Map;
  * állítanak az összes résztvevő között).
  */
 public interface Results {
+
+    List<String> results = new ArrayList<>();
 
     /**
      * Az eddig ismert versenyeredményekhez hozzáad egy új eredményt.
