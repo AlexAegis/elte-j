@@ -1,7 +1,20 @@
 package championships.results;
 
 /**
- * Created by alexa on 2017-05-20.
+ * Ez az osztály a rendszer belépési pontja. Nem példányosítható, egyetlen célja, hogy
+ * a createResults() osztályszintű metódusa segítségével példányosítható legyen a Results interfész.
  */
-public class Factory {
+public final class Factory {
+
+    /**
+     * Visszaad egy új objektumot, mely megvalósítja a Results interfészt.
+     * Tipp: érdemes a Results interfésznek egy megvalósító osztályt készíteni, és
+     * ebben a metódusban azt egyszerűen példányosítani, és az új példányt visszaadni.
+     *
+     * @return egy új objektum, mely megvalósítja a Results interfészt
+     */
+    public static Results createResults() {
+        return null;
+    }
+
 }
