@@ -4,13 +4,13 @@ import championships.competitions.Validable;
 
 import java.util.Arrays;
 
-public enum Country implements Validable<String> {
+public enum Nation implements Validable<String> {
     USA("Egyesult Allamok"),
     HUNGARY("Magyarorszag"),
     FRANCE("Franciaorszag"),
     ANY("");
 
-    public static Country getCountry(String s) {
+    public static Nation getCountry(String s) {
         return Arrays.stream(values())
                 .filter(gender -> gender.getRepresentation().equals(s))
                 .findFirst()
@@ -19,7 +19,7 @@ public enum Country implements Validable<String> {
 
     private String representation;
 
-    Country(String representation) {
+    Nation(String representation) {
         this.representation = representation;
     }
 

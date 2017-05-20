@@ -6,23 +6,23 @@ import championships.results.Participant;
 public class Swimmer implements Participant {
 
     private String name;
-    private Country country;
+    private Nation nation;
 
-    public Swimmer(String name, Country country) {
+    public Swimmer(String name, Nation nation) {
         this.name = name;
-        this.country = country;
+        this.nation = nation;
     }
 
     public static Swimmer createSwimmer(String name, String country) {
         try {
-            return createSwimmer(name, Country.getCountry(country));
+            return createSwimmer(name, Nation.getCountry(country));
         } catch (IllegalArgumentException e) {
             return null;
         }
     }
 
-    public static Swimmer createSwimmer(String name, Country country) {
-        if(Name.ANY.valid(name)) return new Swimmer(name, country);
+    public static Swimmer createSwimmer(String name, Nation nation) {
+        if(Name.ANY.valid(name)) return new Swimmer(name, nation);
         else return null;
     }
 
@@ -33,14 +33,14 @@ public class Swimmer implements Participant {
 
     @Override
     public String getNation() {
-        return country.toString();
+        return nation.toString();
     }
 
     @Override
     public String toString() {
         return "Swimmer{" +
                 "name='" + name + '\'' +
-                ", country=" + country +
+                ", nation=" + nation +
                 '}';
     }
 
@@ -52,13 +52,13 @@ public class Swimmer implements Participant {
         Swimmer swimmer = (Swimmer) o;
 
         if (name != null ? !name.equals(swimmer.name) : swimmer.name != null) return false;
-        return country == swimmer.country;
+        return nation == swimmer.nation;
     }
 
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (country != null ? country.hashCode() : 0);
+        result = 31 * result + (nation != null ? nation.hashCode() : 0);
         return result;
     }
 }

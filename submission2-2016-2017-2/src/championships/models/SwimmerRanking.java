@@ -4,10 +4,8 @@ import championships.competitions.Swimming;
 import championships.results.Participant;
 import championships.results.ranking.Ranking;
 
-import java.io.FileNotFoundException;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.io.*;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public abstract class SwimmerRanking<T extends Comparable<T>> implements Ranking<T> {
@@ -42,11 +40,25 @@ public abstract class SwimmerRanking<T extends Comparable<T>> implements Ranking
 
     @Override
     public void printRankingToFile(String filename) throws FileNotFoundException {
-        System.out.println("PRINTFILE"); //TODO FINISHME
+        try(PrintWriter printWriter = new PrintWriter(new File(filename))) {
+            getPointsOfAll().forEach((a, b) -> printWriter.write(a + ": " + b + "\n"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public Map<String, T> getPointsOfAll() {
-        return getNations().stream().collect(Collectors.toMap(s -> s, this::getPointsOf));
+        return getNations().stream()
+                .collect(Collectors.toMap(s -> s, this::getPointsOf))
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e2,
+                        LinkedHashMap::new));
     }
+
 }

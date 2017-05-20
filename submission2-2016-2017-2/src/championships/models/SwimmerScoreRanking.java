@@ -10,8 +10,10 @@ public class SwimmerScoreRanking extends SwimmerRanking<Integer> {
 
     @Override
     public Integer getPointsOf(String nation) {
-        return results.getResults().stream()
+        return (int) results.getResults().stream()
                 .filter(result -> result.getParticipant().getNation().equals(nation))
-                .mapToInt(Result::getScore).sum();
+                .filter(result -> result.getScore() <= 3)
+                .count();
     }
+
 }
