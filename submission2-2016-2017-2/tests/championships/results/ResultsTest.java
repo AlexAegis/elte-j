@@ -9,5 +9,6 @@ public class ResultsTest {
     @Test
     public void categoryValidatorTest() throws Exception {
         swimming.readFromFile("resources/input.txt");
+
     }
 }

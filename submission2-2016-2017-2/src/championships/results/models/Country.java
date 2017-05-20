@@ -10,6 +10,13 @@ public enum Country implements Validable<String> {
     FRANCE("Franciaorszag"),
     ANY("");
 
+    public static Country getCountry(String s) {
+        return Arrays.stream(values())
+                .filter(gender -> gender.getRepresentation().equals(s))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
     private String representation;
 
     Country(String representation) {

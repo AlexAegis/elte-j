@@ -10,6 +10,13 @@ public enum Length implements Validable<String> {
     FIVEHUNDRED("500 m"),
     ANY("");
 
+    public static Length getLength(String s) {
+        return Arrays.stream(values())
+                .filter(gender -> gender.getRepresentation().equals(s))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
     private final String M = "m";
     private final String SPACE = " ";
 

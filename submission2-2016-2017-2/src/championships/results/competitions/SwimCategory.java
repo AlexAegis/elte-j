@@ -9,6 +9,12 @@ public enum SwimCategory implements Validable<String> {
     BACK("hat"),
     ANY("");
 
+    public static SwimCategory getSwimCategory(String s) {
+        return Arrays.stream(values())
+                .filter(gender -> gender.getRepresentation().equals(s))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
+    }
     private String representation;
 
     SwimCategory(String representation) {

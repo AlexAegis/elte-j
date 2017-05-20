@@ -1,14 +1,16 @@
 package championships.results.competitions;
 
 import championships.results.Participant;
+import championships.results.models.Category;
+import championships.results.models.Result;
 import championships.results.Results;
+import championships.results.models.Country;
 import championships.results.models.Name;
 import championships.results.ranking.Medals;
 import championships.results.ranking.Ranking;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -50,31 +52,21 @@ public class Swimming implements Results {
         try(Scanner scanner = new Scanner(new File(filename))) {
             while(scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                String[] splittedLine = line.split(";");
+                String[] split = line.split(";");
                 if(!line.startsWith("//")
-                        && splittedLine.length == 4
-                        && validateCategory(splittedLine[0])
-                        && Name.ANY.valid(splittedLine[1])
-                        && splittedLine[2].chars().allMatch(Character::isLetter)
-                        && splittedLine[3].chars().allMatch(Character::isDigit)) {
-                    System.out.println(splittedLine[0]);
-                    System.out.println(splittedLine[1]);
-                    System.out.println(splittedLine[2]);
-                    System.out.println(splittedLine[3]);
+                        && split.length == 4
+                        && Name.ANY.valid(split[1])
+                        && Country.ANY.valid(split[2])
+                        && split[3].chars().allMatch(Character::isDigit)) {
+                    Category category = Category.createCategory(split[0]);
+                    if (category != null) {
+                        Result result = new Result(category, split[1], Country.getCountry(split[2]), Integer.parseInt(split[3]));
+                        System.out.println(result.toString());
+                    }
+
                 }
             }
         }
     }
 
-    /**
-     *
-     * @param string the input
-     * @return
-     */
-    private boolean validateCategory(String string) {
-        String[] split = string.split(" ");
-        return split.length >= 3 && Length.ANY.valid(split[0] + " " + split[1])
-                    && ((split.length == 3 && SwimCategory.ANY.valid(split[2]))
-                        || (split.length == 4 && Gender.ANY.valid(split[2]) && SwimCategory.ANY.valid(split[3])));
-    }
 }

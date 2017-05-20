@@ -7,6 +7,13 @@ public enum Gender implements Validable<String>{
     FEMALE("noi"),
     ANY("");
 
+    public static Gender getGender(String s) {
+        return Arrays.stream(values())
+                .filter(gender -> gender.getRepresentation().equals(s))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
     private String representation;
 
     Gender(String representation) {
