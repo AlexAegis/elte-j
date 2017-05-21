@@ -28,7 +28,7 @@ public class CategoryTest {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        Constructor constructor = Category.class.getConstructor(Length.class, SwimmingType.class);
+        Constructor constructor = Category.class.getDeclaredConstructor(Length.class, SwimmingType.class);
         constructor.setAccessible(true);
         category = (Category) constructor.newInstance(Length.ANY, SwimmingType.ANY);
         categoryValidator = Category.class.getDeclaredMethod("valid", String.class);

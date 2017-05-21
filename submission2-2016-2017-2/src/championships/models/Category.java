@@ -16,12 +16,8 @@ public class Category implements Validable<String> {
         this.swimmingType = swimmingType;
     }
 
-    private Category() {
-
-    }
-
     public static Category createCategory(String s) {
-        if(!new Category().valid(s)) return null;
+        if(!new Category(Length.ANY, SwimmingType.ANY).valid(s)) return null;
         String[] split = s.split(" ");
         if(split.length == 3)
             return new Category(Length.getLength(split[0] + " " + split[1]), SwimmingType.getSwimCategory(split[2]));
