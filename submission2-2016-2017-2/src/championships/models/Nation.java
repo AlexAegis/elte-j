@@ -3,6 +3,7 @@ package championships.models;
 import championships.competitions.Validable;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public enum Nation implements Validable<String> {
     USA("egyesult allamok", "egyesült államok", "united states", "usa"),
@@ -41,6 +42,8 @@ public enum Nation implements Validable<String> {
 
     @Override
     public String toString() {
-        return representation[0];
+        return Arrays.stream(representation[0].split(" "))
+                .map(s -> Character.toUpperCase(s.toCharArray()[0]) + s.substring(1, s.length()))
+                .collect(Collectors.joining(" "));
     }
 }

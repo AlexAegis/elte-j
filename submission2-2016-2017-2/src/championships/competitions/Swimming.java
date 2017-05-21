@@ -93,7 +93,6 @@ public class Swimming implements Results {
                     } catch (IllegalArgumentException e) {
                         //e.printStackTrace();
                     }
-
                 }
             }
         }
