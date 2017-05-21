@@ -64,5 +64,4 @@ public interface Medals extends Comparable<Medals> {
      * @return ennek az objektumnak egy szöveges reprezentációja
      */
     String toString();
-
 }

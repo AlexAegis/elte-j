@@ -62,13 +62,13 @@ public class Swimming implements Results {
         return new SwimmerRankingByMedals(this);
     }
 
-    public List<SwimmingResult> getResultsByNation(String nation) {
+    List<SwimmingResult> getResultsByNation(String nation) {
         return swimmingResults.stream()
                 .filter(o -> o.getParticipant().getNation().equals(Nation.getCountry(nation).toString()))
                 .collect(Collectors.toList());
     }
 
-    public List<String> getAllEvents() {
+    private List<String> getAllEvents() {
         return swimmingResults.stream()
                 .map(SwimmingResult::getCategory)
                 .distinct()
@@ -94,7 +94,7 @@ public class Swimming implements Results {
                     try {
                         addResult(split[0], split[1], split[2], Integer.parseInt(split[3]));
                     } catch (IllegalArgumentException e) {
-                        //e.printStackTrace();
+                        System.err.println("invalid result: " + line);
                     }
                 }
             }

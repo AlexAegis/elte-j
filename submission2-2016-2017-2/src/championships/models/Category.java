@@ -6,12 +6,12 @@ public class Category implements Validable<String> {
     private Gender gender;
     private SwimmingType swimmingType;
 
-    public Category(Length length, Gender gender, SwimmingType swimmingType) {
+    private Category(Length length, Gender gender, SwimmingType swimmingType) {
         this(length, swimmingType);
         this.gender = gender;
     }
 
-    public Category(Length length, SwimmingType swimmingType) {
+    private Category(Length length, SwimmingType swimmingType) {
         this.length = length;
         this.swimmingType = swimmingType;
     }
@@ -45,9 +45,7 @@ public class Category implements Validable<String> {
 
         Category category = (Category) o;
 
-        if (length != category.length) return false;
-        if (gender != category.gender) return false;
-        return swimmingType == category.swimmingType;
+        return length == category.length && gender == category.gender && swimmingType == category.swimmingType;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package championships.competitions;
 
-import championships.competitions.SwimmerRanking;
 import championships.competitions.swimming.Swimming;
 import championships.competitions.swimming.SwimmingMedals;
 import championships.results.ranking.Medals;
@@ -15,5 +14,4 @@ public class SwimmerRankingByMedals extends SwimmerRanking<Medals> {
     public Medals getPointsOf(String nation) {
         return new SwimmingMedals(results, nation);
     }
-
 }

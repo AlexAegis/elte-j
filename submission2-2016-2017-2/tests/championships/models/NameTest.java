@@ -1,6 +1,5 @@
 package championships.models;
 
-
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collection;
@@ -30,7 +29,6 @@ public class NameTest {
                 {"", false}});
     }
 
-
     @Parameter
     public String input;
 
@@ -45,5 +43,4 @@ public class NameTest {
         boolean result = (boolean) categoryValidator.invoke(Name.ANY, input);
         assertEquals("failed assertion on: " + input, expected, result);
     }
-
 }

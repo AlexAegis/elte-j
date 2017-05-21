@@ -2,7 +2,6 @@ package championships.competitions.swimming;
 
 import championships.results.ranking.Medals;
 
-
 public class SwimmingMedals implements Medals {
 
     private Swimming results;

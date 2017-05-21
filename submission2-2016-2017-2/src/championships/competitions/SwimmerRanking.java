@@ -12,7 +12,7 @@ public abstract class SwimmerRanking<T extends Comparable<T>> implements Ranking
 
     protected Swimming results;
 
-    public SwimmerRanking(Swimming results) {
+    SwimmerRanking(Swimming results) {
         this.results = results;
     }
 
@@ -51,5 +51,4 @@ public abstract class SwimmerRanking<T extends Comparable<T>> implements Ranking
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
     }
-
 }

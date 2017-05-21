@@ -126,5 +126,4 @@ public interface Ranking<T extends Comparable<T>> {
      * @throws FileNotFoundException ha a megadott nevű fájl nem írható/létrehozható
      */
     void printRankingToFile(String filename) throws FileNotFoundException;
-
 }

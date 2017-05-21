@@ -1,6 +1,5 @@
 package championships.results;
 
-
 import championships.results.ranking.Medals;
 import championships.results.ranking.Ranking;
 
@@ -178,5 +177,4 @@ public interface Results {
      * @throws FileNotFoundException ha a megadott nevű fájl nem található
      */
     void readFromFile(String filename) throws FileNotFoundException;
-
 }

@@ -8,9 +8,6 @@ import championships.competitions.swimming.Swimming;
  */
 public final class Factory {
 
-    /**
-     * Konstruktor privátra állítva, hogy megelőzzük az osztály példányosítását
-     */
     private Factory() {
 
     }
@@ -25,5 +22,4 @@ public final class Factory {
     public static Results createResults() {
         return new Swimming();
     }
-
 }

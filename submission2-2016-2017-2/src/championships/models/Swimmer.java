@@ -1,6 +1,5 @@
 package championships.models;
 
-
 import championships.results.Participant;
 
 public class Swimmer implements Participant {
@@ -8,7 +7,7 @@ public class Swimmer implements Participant {
     private String name;
     private Nation nation;
 
-    public Swimmer(String name, Nation nation) {
+    private Swimmer(String name, Nation nation) {
         this.name = name;
         this.nation = nation;
     }
@@ -17,7 +16,7 @@ public class Swimmer implements Participant {
         return createSwimmer(name, Nation.getCountry(country));
     }
 
-    public static Swimmer createSwimmer(String name, Nation nation) {
+    private static Swimmer createSwimmer(String name, Nation nation) {
         if(Name.ANY.valid(name)) return new Swimmer(name, nation);
         else return null;
     }
@@ -34,10 +33,7 @@ public class Swimmer implements Participant {
 
     @Override
     public String toString() {
-        return "Swimmer{" +
-                "name='" + name + '\'' +
-                ", nation=" + nation +
-                '}';
+        return name +  "; " + nation;
     }
 
     @Override
@@ -47,8 +43,7 @@ public class Swimmer implements Participant {
 
         Swimmer swimmer = (Swimmer) o;
 
-        if (name != null ? !name.equals(swimmer.name) : swimmer.name != null) return false;
-        return nation == swimmer.nation;
+        return (name != null ? name.equals(swimmer.name) : swimmer.name == null) && nation == swimmer.nation;
     }
 
     @Override

@@ -9,13 +9,13 @@ public class SwimmingResult implements Comparable<SwimmingResult> {
     private Participant participant;
     private int score;
 
-    public SwimmingResult(Category category, Participant participant, int score) {
+    SwimmingResult(Category category, Participant participant, int score) {
         this.category = category;
         this.participant = participant;
         this.score = score;
     }
 
-    public Category getCategory() {
+    Category getCategory() {
         return category;
     }
 
@@ -29,11 +29,7 @@ public class SwimmingResult implements Comparable<SwimmingResult> {
 
     @Override
     public String toString() {
-        return "SwimmingResult{" +
-                "category=" + category +
-                ", participant=" + participant +
-                ", score=" + score +
-                '}';
+        return category + ";" + participant + ";" + score;
     }
 
     @Override

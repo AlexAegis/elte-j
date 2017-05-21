@@ -24,11 +24,6 @@ public enum Gender implements Validable<String> {
         return representation;
     }
 
-    /**
-     * Validator, if called on an ANY it iterates through all the others
-     * @param s input
-     * @return true if its matches any of the categories
-     */
     @Override
     public boolean valid(String s) {
         return equals(ANY) ? Arrays.stream(values()).anyMatch(sw -> !sw.equals(ANY) && sw.valid(s.toLowerCase()))

@@ -1,6 +1,5 @@
 package championships.competitions;
 
-import championships.competitions.SwimmerRanking;
 import championships.competitions.swimming.Swimming;
 
 public class SwimmerRankingByScore extends SwimmerRanking<Integer> {
@@ -16,5 +15,4 @@ public class SwimmerRankingByScore extends SwimmerRanking<Integer> {
                 .filter(result -> result.getScore() <= 3)
                 .count();
     }
-
 }

@@ -24,5 +24,4 @@ public interface Participant {
      * @return a résztvevő nemzetisége
      */
     String getNation();
-
 }
