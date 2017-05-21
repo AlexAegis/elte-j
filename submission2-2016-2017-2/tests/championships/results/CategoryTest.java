@@ -1,8 +1,8 @@
 package championships.results;
 
-import championships.competitions.Length;
-import championships.competitions.SwimCategory;
 import championships.models.Category;
+import championships.models.Length;
+import championships.models.SwimmingType;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,9 +28,9 @@ public class CategoryTest {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        Constructor constructor = Category.class.getConstructor(Length.class, SwimCategory.class);
+        Constructor constructor = Category.class.getConstructor(Length.class, SwimmingType.class);
         constructor.setAccessible(true);
-        category = (Category) constructor.newInstance(Length.ANY, SwimCategory.ANY);
+        category = (Category) constructor.newInstance(Length.ANY, SwimmingType.ANY);
         categoryValidator = Category.class.getDeclaredMethod("valid", String.class);
         categoryValidator.setAccessible(true);
     }
@@ -39,11 +39,13 @@ public class CategoryTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
                 {"200 m noi hat", true},
-                {"200 m ferfi pillango", true},
+                {"200 m Férfi pillango", true},
+                {"200 m male pillango", true},
+                {"200 m Male pillango", true},
                 {"200 m vegyes", true},
                 {"400 m freestyle", true},
                 {"200 m pillango", true},
-                {"200 m noi pillango", true},
+                {"200 m Női pillango", true},
                 {"50 m vegyes", true},
                 {"50 m hat", true},
                 {"pillango", false},

@@ -1,5 +1,8 @@
-package championships.competitions;
+package championships.competitions.swimming;
 
+import championships.competitions.Swimmer;
+import championships.competitions.SwimmerRankingByMedals;
+import championships.competitions.SwimmerRankingByScore;
 import championships.models.*;
 import championships.results.Participant;
 import championships.results.Results;
@@ -13,7 +16,7 @@ import java.util.stream.Collectors;
 
 public class Swimming implements Results {
 
-    private List<Result> results = new ArrayList<>();
+    private List<SwimmingResult> swimmingResults = new ArrayList<>();
 
     @Override
     public void addResult(String event, String name, String nation, int place) throws IllegalArgumentException {
@@ -26,21 +29,21 @@ public class Swimming implements Results {
     public void addResult(String event, Participant participant, int place) throws IllegalArgumentException {
         Category category = Category.createCategory(event);
         if(category == null) throw new IllegalArgumentException("category invalid");
-        if(results.stream()
-                .filter(result -> result.getCategory().equals(category))
-                .anyMatch(result -> result.getScore() == place)) {
+        if(swimmingResults.stream()
+                .filter(swimmingResult -> swimmingResult.getCategory().equals(category))
+                .anyMatch(swimmingResult -> swimmingResult.getScore() == place)) {
             throw new IllegalArgumentException(place + " already occupied in " + event);
         }
         if(place <= 0) throw new IllegalArgumentException("place cannot be negative");
-        else results.add(new Result(Category.createCategory(event), participant, place));
+        else swimmingResults.add(new SwimmingResult(Category.createCategory(event), participant, place));
     }
 
     @Override
     public List<Participant> getResultsOf(String event) {
-        return results.stream()
-                .filter(result -> result.getCategory().equals(Category.createCategory(event)))
+        return swimmingResults.stream()
+                .filter(swimmingResult -> swimmingResult.getCategory().equals(Category.createCategory(event)))
                 .sorted()
-                .map(Result::getParticipant)
+                .map(SwimmingResult::getParticipant)
                 .collect(Collectors.toList());
     }
 
@@ -51,34 +54,34 @@ public class Swimming implements Results {
 
     @Override
     public Ranking<Integer> rankNationsByTotalMedals() {
-        return new SwimmerScoreRanking(this);
+        return new SwimmerRankingByScore(this);
     }
 
     @Override
     public Ranking<Medals> rankNationsByGoldFirst() {
-        return new SwimmerMedalRanking(this);
+        return new SwimmerRankingByMedals(this);
     }
 
-    public List<Result> getResultsByNation(String nation) {
-        return results.stream()
+    public List<SwimmingResult> getResultsByNation(String nation) {
+        return swimmingResults.stream()
                 .filter(o -> o.getParticipant().getNation().equals(Nation.getCountry(nation).toString()))
                 .collect(Collectors.toList());
     }
 
     public List<String> getAllEvents() {
-        return results.stream()
-                .map(Result::getCategory)
+        return swimmingResults.stream()
+                .map(SwimmingResult::getCategory)
                 .distinct()
                 .map(Category::toString)
                 .collect(Collectors.toList());
     }
 
     public List<Participant> getParticipants() {
-        return results.stream().map(Result::getParticipant).distinct().collect(Collectors.toList());
+        return swimmingResults.stream().map(SwimmingResult::getParticipant).distinct().collect(Collectors.toList());
     }
 
-    public List<Result> getResults() {
-        return results;
+    public List<SwimmingResult> getSwimmingResults() {
+        return swimmingResults;
     }
 
     @Override

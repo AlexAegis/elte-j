@@ -1,14 +1,15 @@
-package championships.models;
+package championships.competitions.swimming;
 
+import championships.models.Category;
 import championships.results.Participant;
 
-public class Result implements Comparable<Result> {
+public class SwimmingResult implements Comparable<SwimmingResult> {
 
     private Category category;
     private Participant participant;
     private int score;
 
-    public Result(Category category, Participant participant, int score) {
+    public SwimmingResult(Category category, Participant participant, int score) {
         this.category = category;
         this.participant = participant;
         this.score = score;
@@ -28,7 +29,7 @@ public class Result implements Comparable<Result> {
 
     @Override
     public String toString() {
-        return "Result{" +
+        return "SwimmingResult{" +
                 "category=" + category +
                 ", participant=" + participant +
                 ", score=" + score +
@@ -36,7 +37,7 @@ public class Result implements Comparable<Result> {
     }
 
     @Override
-    public int compareTo(Result o) {
+    public int compareTo(SwimmingResult o) {
         return getScore() - o.getScore();
     }
 }

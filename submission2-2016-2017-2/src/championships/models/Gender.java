@@ -1,25 +1,23 @@
-package championships.competitions;
+package championships.models;
 
 import java.util.Arrays;
 
-public enum SwimCategory implements Validable<String> {
-    FREESTYLE("gyors", "freestyle"),
-    BUTTERFLYSTROKE("pillango", "butterfly stroke"),
-    MEDLEY("vegyes", "medley"),
-    BACK("hat", "back"),
+public enum Gender implements Validable<String> {
+    MALE("ferfi", "male", "férfi"),
+    FEMALE("noi", "female", "női"),
     ANY("");
+
+    public static Gender getGender(String s) {
+        return Arrays.stream(values())
+                .filter(o -> Arrays.stream(o.getRepresentation()).anyMatch(s.toLowerCase()::equals))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
+    }
 
     private String[] representation;
 
-    SwimCategory(String... representation) {
+    Gender(String... representation) {
         this.representation = representation;
-    }
-
-    public static SwimCategory getSwimCategory(String s) {
-        return Arrays.stream(values())
-                .filter(o -> Arrays.stream(o.getRepresentation()).anyMatch(s::equals))
-                .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
     }
 
     public String[] getRepresentation() {

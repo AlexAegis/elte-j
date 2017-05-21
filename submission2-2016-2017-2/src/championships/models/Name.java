@@ -1,7 +1,5 @@
 package championships.models;
 
-import championships.competitions.Validable;
-
 import java.util.Arrays;
 
 public enum Name implements Validable<String> {

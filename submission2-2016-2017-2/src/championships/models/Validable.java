@@ -1,4 +1,4 @@
-package championships.competitions;
+package championships.models;
 
 public interface Validable<T> {
 

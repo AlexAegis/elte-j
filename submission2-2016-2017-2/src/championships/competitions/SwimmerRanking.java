@@ -1,6 +1,6 @@
-package championships.models;
+package championships.competitions;
 
-import championships.competitions.Swimming;
+import championships.competitions.swimming.Swimming;
 import championships.results.Participant;
 import championships.results.ranking.Ranking;
 
