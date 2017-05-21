@@ -11,7 +11,7 @@ public class SwimmerMedalRanking extends SwimmerRanking<Medals> {
 
     @Override
     public Medals getPointsOf(String nation) {
-        return new Medal(results, nation);
+        return new SwimmingMedals(results, nation);
     }
 
 }

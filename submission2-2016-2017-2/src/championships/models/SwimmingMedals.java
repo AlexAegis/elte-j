@@ -4,12 +4,12 @@ import championships.competitions.Swimming;
 import championships.results.ranking.Medals;
 
 
-public class Medal implements Medals {
+public class SwimmingMedals implements Medals {
 
     private Swimming results;
     private String nation;
 
-    public Medal(Swimming results, String nation) {
+    public SwimmingMedals(Swimming results, String nation) {
         this.results = results;
         this.nation = nation;
     }
@@ -37,9 +37,9 @@ public class Medal implements Medals {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Medal medal = (Medal) o;
+        SwimmingMedals swimmingMedals = (SwimmingMedals) o;
 
-        return getGolds() == medal.getGolds() && getSilvers() == medal.getSilvers() && getBronzes() == medal.getBronzes();
+        return getGolds() == swimmingMedals.getGolds() && getSilvers() == swimmingMedals.getSilvers() && getBronzes() == swimmingMedals.getBronzes();
     }
 
     @Override

@@ -13,12 +13,8 @@ public class Swimmer implements Participant {
         this.nation = nation;
     }
 
-    public static Swimmer createSwimmer(String name, String country) {
-        try {
-            return createSwimmer(name, Nation.getCountry(country));
-        } catch (IllegalArgumentException e) {
-            return null;
-        }
+    public static Swimmer createSwimmer(String name, String country) throws IllegalArgumentException {
+        return createSwimmer(name, Nation.getCountry(country));
     }
 
     public static Swimmer createSwimmer(String name, Nation nation) {

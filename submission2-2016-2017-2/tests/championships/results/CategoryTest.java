@@ -3,8 +3,6 @@ package championships.results;
 import championships.competitions.Length;
 import championships.competitions.SwimCategory;
 import championships.models.Category;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
