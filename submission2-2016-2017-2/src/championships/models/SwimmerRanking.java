@@ -26,11 +26,7 @@ public abstract class SwimmerRanking<T extends Comparable<T>> implements Ranking
 
     @Override
     public List<String> getRanking() {
-        return results.getResults().stream()
-                .sorted()
-                .map(result -> result.getParticipant().getNation())
-                .distinct()
-                .collect(Collectors.toList());
+        return new ArrayList<>(getPointsOfAll().keySet());
     }
 
     @Override
@@ -51,9 +47,8 @@ public abstract class SwimmerRanking<T extends Comparable<T>> implements Ranking
     public Map<String, T> getPointsOfAll() {
         return getNations().stream()
                 .collect(Collectors.toMap(s -> s, this::getPointsOf))
-                .entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
+                .entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
     }
 

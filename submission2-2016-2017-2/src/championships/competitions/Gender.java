@@ -3,24 +3,24 @@ package championships.competitions;
 import java.util.Arrays;
 
 public enum Gender implements Validable<String>{
-    MALE("ferfi"),
-    FEMALE("noi"),
+    MALE("ferfi", "male"),
+    FEMALE("noi", "female"),
     ANY("");
 
     public static Gender getGender(String s) {
         return Arrays.stream(values())
-                .filter(gender -> gender.getRepresentation().equals(s))
+                .filter(o -> Arrays.stream(o.getRepresentation()).anyMatch(s::equals))
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    private String representation;
+    private String[] representation;
 
-    Gender(String representation) {
+    Gender(String... representation) {
         this.representation = representation;
     }
 
-    public String getRepresentation() {
+    public String[] getRepresentation() {
         return representation;
     }
 
@@ -31,12 +31,12 @@ public enum Gender implements Validable<String>{
      */
     @Override
     public boolean valid(String s) {
-        return equals(ANY) ? Arrays.stream(values()).anyMatch(sw -> !sw.equals(ANY) && sw.valid(s))
-                : s.chars().allMatch(Character::isLetter) && getRepresentation().equals(s);
+        return equals(ANY) ? Arrays.stream(values()).anyMatch(sw -> !sw.equals(ANY) && sw.valid(s.toLowerCase()))
+                : s.chars().allMatch(Character::isLetter) && Arrays.stream(getRepresentation()).anyMatch(s.toLowerCase()::equals);
     }
 
     @Override
     public String toString() {
-        return representation;
+        return representation[0];
     }
 }

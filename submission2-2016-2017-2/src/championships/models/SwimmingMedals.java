@@ -49,9 +49,11 @@ public class SwimmingMedals implements Medals {
 
     @Override
     public int compareTo(Medals obj) {
-        return ((getGolds() - obj.getGolds()) * 100)
-                + ((getSilvers() - obj.getSilvers()) * 10)
-                - (getBronzes() - obj.getBronzes());
+        return getGolds() - obj.getGolds() != 0
+                ? getGolds() - obj.getGolds()
+                :  getSilvers() - obj.getSilvers() != 0
+                    ? getSilvers() - obj.getSilvers()
+                    : getBronzes() - obj.getBronzes();
     }
 
     @Override

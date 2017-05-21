@@ -25,7 +25,7 @@ public class Swimming implements Results {
     @Override
     public void addResult(String event, Participant participant, int place) throws IllegalArgumentException {
         Category category = Category.createCategory(event);
-        if(category == null) throw new IllegalArgumentException();
+        if(category == null) throw new IllegalArgumentException("category invalid");
         if(results.stream()
                 .filter(result -> result.getCategory().equals(category))
                 .anyMatch(result -> result.getScore() == place)) {
@@ -61,7 +61,7 @@ public class Swimming implements Results {
 
     public List<Result> getResultsByNation(String nation) {
         return results.stream()
-                .filter(result -> result.getParticipant().getNation().equals(nation))
+                .filter(o -> o.getParticipant().getNation().equals(Nation.getCountry(nation).toString()))
                 .collect(Collectors.toList());
     }
 

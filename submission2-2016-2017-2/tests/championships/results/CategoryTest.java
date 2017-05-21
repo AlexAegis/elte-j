@@ -41,7 +41,7 @@ public class CategoryTest {
                 {"200 m noi hat", true},
                 {"200 m ferfi pillango", true},
                 {"200 m vegyes", true},
-                {"400 m vegyes", true},
+                {"400 m freestyle", true},
                 {"200 m pillango", true},
                 {"200 m noi pillango", true},
                 {"50 m vegyes", true},

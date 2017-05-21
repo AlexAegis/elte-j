@@ -3,25 +3,26 @@ package championships.competitions;
 import java.util.Arrays;
 
 public enum SwimCategory implements Validable<String> {
-    FREESTYLE("gyors"),
-    BUTTERFLYSTROKE("pillango"),
-    MEDLEY("vegyes"),
-    BACK("hat"),
+    FREESTYLE("gyors", "freestyle"),
+    BUTTERFLYSTROKE("pillango", "butterfly stroke"),
+    MEDLEY("vegyes", "medley"),
+    BACK("hat", "back"),
     ANY("");
 
-    public static SwimCategory getSwimCategory(String s) {
-        return Arrays.stream(values())
-                .filter(gender -> gender.getRepresentation().equals(s))
-                .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
-    }
-    private String representation;
+    private String[] representation;
 
-    SwimCategory(String representation) {
+    SwimCategory(String... representation) {
         this.representation = representation;
     }
 
-    public String getRepresentation() {
+    public static SwimCategory getSwimCategory(String s) {
+        return Arrays.stream(values())
+                .filter(o -> Arrays.stream(o.getRepresentation()).anyMatch(s::equals))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
+    public String[] getRepresentation() {
         return representation;
     }
 
@@ -32,12 +33,12 @@ public enum SwimCategory implements Validable<String> {
      */
     @Override
     public boolean valid(String s) {
-        return equals(ANY) ? Arrays.stream(values()).anyMatch(sw -> !sw.equals(ANY) && sw.valid(s))
-                : s.chars().allMatch(Character::isLetter) && getRepresentation().equals(s);
+        return equals(ANY) ? Arrays.stream(values()).anyMatch(sw -> !sw.equals(ANY) && sw.valid(s.toLowerCase()))
+                : s.chars().allMatch(Character::isLetter) && Arrays.stream(getRepresentation()).anyMatch(s.toLowerCase()::equals);
     }
 
     @Override
     public String toString() {
-        return representation;
+        return representation[0];
     }
 }
