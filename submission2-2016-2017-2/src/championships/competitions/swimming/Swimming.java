@@ -13,7 +13,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Swimming implements Results {
 
@@ -95,19 +94,19 @@ public class Swimming implements Results {
     }
 
     @Override
-        public void readFromFile(String filename) throws FileNotFoundException {
-            try(Scanner scanner = new Scanner(new File(filename))) {
-                while(scanner.hasNextLine()) {
-                    String line = scanner.nextLine();
-                    String[] split = line.split(";");
-                    if(!line.startsWith("//") && split.length == 4 && split[3].chars().allMatch(Character::isDigit)) {
-                        try {
-                            addResult(split[0], split[1], split[2], Integer.parseInt(split[3]));
-                        } catch (IllegalArgumentException e) {
-                            System.err.println("invalid result: " + line);
-                        }
+    public void readFromFile(String filename) throws FileNotFoundException {
+        try(Scanner scanner = new Scanner(new File(filename))) {
+            while(scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] split = line.split(";");
+                if(!line.startsWith("//") && split.length == 4 && split[3].chars().allMatch(Character::isDigit)) {
+                    try {
+                        addResult(split[0], split[1], split[2], Integer.parseInt(split[3]));
+                    } catch (IllegalArgumentException e) {
+                        System.err.println("invalid result: " + line);
                     }
                 }
+            }
         }
     }
 }
