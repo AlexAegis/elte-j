@@ -59,10 +59,6 @@ public class Swimming implements Results {
         return new SwimmerMedalRanking(this);
     }
 
-    public List<Result> getResults() {
-        return results;
-    }
-
     public List<Result> getResultsByNation(String nation) {
         return results.stream()
                 .filter(result -> result.getParticipant().getNation().equals(nation))
@@ -79,6 +75,10 @@ public class Swimming implements Results {
 
     public List<Participant> getParticipants() {
         return results.stream().map(Result::getParticipant).distinct().collect(Collectors.toList());
+    }
+
+    public List<Result> getResults() {
+        return results;
     }
 
     @Override
