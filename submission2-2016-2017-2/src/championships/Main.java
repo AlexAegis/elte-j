@@ -19,7 +19,7 @@ public class Main {
         results.addResult("50 m gyors", "Asd Asd", "Egyesult Allamok", 3);
         //results.addResult("200 m gyors", "Asd Asd", "Egyesult Allamok", 1);
         //results.addResult("100 m gyors", "Asd Asd", "Egyesult Allamok", 1);
-
+        results.getResultsOfAll().forEach((key, value) -> System.out.println(key + " - " + value));
         Ranking ranking1 = results.rankNationsByGoldFirst();
         Ranking ranking2 = results.rankNationsByTotalMedals();
         System.out.println(ranking1.getPointsOfAll());

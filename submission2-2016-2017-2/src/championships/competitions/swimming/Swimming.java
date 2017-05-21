@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Swimming implements Results {
 
@@ -40,11 +41,20 @@ public class Swimming implements Results {
 
     @Override
     public List<Participant> getResultsOf(String event) {
-        return swimmingResults.stream()
+        List<Participant> results = new ArrayList<>();
+        List<SwimmingResult> b = swimmingResults.stream()
                 .filter(swimmingResult -> swimmingResult.getCategory().equals(Category.createCategory(event)))
                 .sorted()
-                .map(SwimmingResult::getParticipant)
                 .collect(Collectors.toList());
+        if(b.size() > 0) {
+            for (int i = 0; i < b.get(b.size() - 1).getScore(); i++) {
+                int finalI = i + 1;
+                Optional<SwimmingResult> o = b.stream().filter(swimmingResult -> swimmingResult.getScore() == finalI).findFirst();
+                if(o.isPresent()) results.add(o.get().getParticipant());
+                else results.add(null);
+            }
+        }
+        return results;
     }
 
     @Override
@@ -85,19 +95,19 @@ public class Swimming implements Results {
     }
 
     @Override
-    public void readFromFile(String filename) throws FileNotFoundException {
-        try(Scanner scanner = new Scanner(new File(filename))) {
-            while(scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                String[] split = line.split(";");
-                if(!line.startsWith("//") && split.length == 4 && split[3].chars().allMatch(Character::isDigit)) {
-                    try {
-                        addResult(split[0], split[1], split[2], Integer.parseInt(split[3]));
-                    } catch (IllegalArgumentException e) {
-                        System.err.println("invalid result: " + line);
+        public void readFromFile(String filename) throws FileNotFoundException {
+            try(Scanner scanner = new Scanner(new File(filename))) {
+                while(scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+                    String[] split = line.split(";");
+                    if(!line.startsWith("//") && split.length == 4 && split[3].chars().allMatch(Character::isDigit)) {
+                        try {
+                            addResult(split[0], split[1], split[2], Integer.parseInt(split[3]));
+                        } catch (IllegalArgumentException e) {
+                            System.err.println("invalid result: " + line);
+                        }
                     }
                 }
-            }
         }
     }
 }
