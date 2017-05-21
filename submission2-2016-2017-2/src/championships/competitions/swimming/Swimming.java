@@ -1,6 +1,6 @@
 package championships.competitions.swimming;
 
-import championships.competitions.Swimmer;
+import championships.models.Swimmer;
 import championships.competitions.SwimmerRankingByMedals;
 import championships.competitions.SwimmerRankingByScore;
 import championships.models.*;

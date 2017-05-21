@@ -1,8 +1,6 @@
-package championships.competitions;
+package championships.models;
 
 
-import championships.models.Name;
-import championships.models.Nation;
 import championships.results.Participant;
 
 public class Swimmer implements Participant {
