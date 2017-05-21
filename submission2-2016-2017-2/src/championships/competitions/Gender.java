@@ -9,7 +9,7 @@ public enum Gender implements Validable<String>{
 
     public static Gender getGender(String s) {
         return Arrays.stream(values())
-                .filter(o -> Arrays.stream(o.getRepresentation()).anyMatch(s::equals))
+                .filter(o -> Arrays.stream(o.getRepresentation()).anyMatch(s.toLowerCase()::equals))
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
     }
